@@ -38,7 +38,7 @@ var makeArray = function(nonarray) {
 
 // Create a new instance of Logger, logging to the file at `log_file_path`
 // if `log_file_path` is null, log to STDOUT.
-var Logger = function(log_file_path) {
+var Logger = function(log_file_path, fileonly) {
   // default write is STDOUT
   this.write     = sys.print;
   this.log_level_index = 3;
@@ -49,7 +49,13 @@ var Logger = function(log_file_path) {
     log_file_path = path.normalize(log_file_path);
     this.stream = fs.createWriteStream(log_file_path, {flags: 'a', encoding: 'utf8', mode: 0666});
     this.stream.write("\n");
-    this.write = function(text) { this.stream.write(text); };
+    this.write = function(text) { 
+        // write to both file and stdout
+        this.stream.write( text );
+        if (!fileonly) {
+            sys.print( text );
+        }
+    };
   }
 };
 
@@ -60,7 +66,8 @@ Logger.levels = ['fatal', 'error', 'warn', 'info', 'debug'];
 //    error [Sat Jun 12 2010 01:12:05 GMT-0400 (EDT)] message
 // 
 Logger.prototype.format = function(level, date, message) {
-  return [ level.toUpperCase(), ' [', date.toJSON().substring(11,23), '] ', message].join('');
+  var pad = level.length === 4 ? '  [' : ' ['
+  return [ level.toUpperCase(), pad, date.toJSON().substring(11,23), ']', message ].join('');
 };
 
 // Set the maximum log level. The default level is "info".
@@ -111,6 +118,9 @@ Logger.levels.forEach(function(level) {
 
 exports.Logger = Logger;
 exports.createLogger = function(log_file_path) {
-  return new Logger(log_file_path);
+  return new Logger(log_file_path, false);
+};
+exports.createFileLogger = function(log_file_path) {
+  return new Logger(log_file_path, true);
 };
 
