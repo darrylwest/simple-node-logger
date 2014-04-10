@@ -1,6 +1,6 @@
 {
   "name": "simple-node-logger",
-  "version": "0.90.002",
+  "version": "0.9.3",
   "description": "'simple node console and file logger suitable for command line projects'",
   "main": "logger.js",
   "repository": {
@@ -9,8 +9,5 @@
   },
   "author": "darryl.west@raincitysoftware.com",
   "license": "Apache 2.0",
-  "bugs": {
-    "url": "https://github.com/darrylwest/simple-node-logger/issues"
-  },
   "homepage": "https://github.com/darrylwest/simple-node-logger"
 }

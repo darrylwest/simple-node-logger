@@ -7,15 +7,35 @@ A very simple multi-level logger for console and file inspired by Aaron Quint's 
 - default format: Level [ time ] message [, message, object, etc ]
 - write to console, file or both
 
+Installation
+===
+npm install simple-node-logger --save
+
+
 How to use
 ===
+	// create a stdout console logger
 	var log = require('simple-node-logger').createLogger();
 
 or
 
-	var log = require('simple-node-logger).createLogger('project.log');
+	// create a stdout and file logger
+	var log = require('simple-node-logger').createLogger('project.log');
 
-The first use will simply log to the console.  The second will log to the console and to the project.log file.
+or
+
+	// create a file only file logger
+	var log = require('simple-node-logger').createFileLogger('project.log');
+	
+The first use will simply log to the console.  The second will log to the console and to the project.log file.  The third logs to the file only.
+
+Log Levels
+===
+The default level is 'info' but the log level can be set by doing this:
+
+	log.setLevel('warn');
+	
+This sets the log level to warn and suppresses debug and info messages.
 
 Default Format
 ===
@@ -34,4 +54,4 @@ License
 Apache 2.0
 
 - - -
-<p><small><em>version 0.90.002</em></small></p>
+<p><small><em>version 0.9.3</em></small></p>
