@@ -9,17 +9,24 @@ A very simple multi-level logger for console and file inspired by Aaron Quint's 
 
 How to use
 ===
-var log = require('simple-node-logger').createLogger();
+	var log = require('simple-node-logger').createLogger();
 
 or
 
-var log = require('simple-node-logger).createLogger('project.log');
+	var log = require('simple-node-logger).createLogger('project.log');
 
 The first use will simply log to the console.  The second will log to the console and to the project.log file.
 
 Default Format
 ===
-The default format is LEVEL [ time ] message
+The default format is LEVEL [ time ] message. For example, the log message:
+
+	log.info('subscription to ', channel, ' accepted at ', new Date().toJSON());
+
+Yields:
+
+	INFO [14:14:21.363]  subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
+	
 
 
 License
