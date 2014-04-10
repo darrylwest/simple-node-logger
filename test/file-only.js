@@ -1,11 +1,9 @@
 #!/usr/bin/env node 
 
 var fs = require('fs'),
-    file = 'logs/file-test.log',
-    log = require('../logger').createLogger( file ),
+    file = 'logs/file-only-test.log',
+    log = require('../logger').createFileLogger( file ),
     types = [ 'debug', 'info', 'warn', 'error', 'fatal' ];
-
-log.setLevel('debug');
 
 types.forEach(function(type) {
     log[ type ]('file/stdout test ', type, ' log at ', Date.now());
