@@ -109,7 +109,7 @@ Logger.levels.forEach(function(level) {
   };
 });
 
-exports.SimpleLogger = Logger;
+exports.Logger = Logger;
 exports.createLogger = function(log_file_path) {
   return new Logger(log_file_path);
 };
