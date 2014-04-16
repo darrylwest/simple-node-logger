@@ -8,7 +8,7 @@ test:
 	@( node test/stdout-log.js )
 
 publish:
-	@( node publish ./ )
+	@( npm publish ./ )
 
 .PHONY:	test
 .PHONY:	publish
