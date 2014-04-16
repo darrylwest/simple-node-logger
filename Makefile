@@ -7,4 +7,8 @@ test:
 	@( node test/file-only.js )
 	@( node test/stdout-log.js )
 
+publish:
+	@( node publish ./ )
+
 .PHONY:	test
+.PHONY:	publish
