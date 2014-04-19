@@ -67,7 +67,7 @@ Logger.levels = ['fatal', 'error', 'warn', 'info', 'debug'];
 // 
 Logger.prototype.format = function(level, date, message) {
   var pad = level.length === 4 ? '  [' : ' ['
-  return [ level.toUpperCase(), pad, date.toJSON().substring(11,23), ']', message ].join('');
+  return [ level.toUpperCase(), pad, date.toJSON().substring(11,23), '] ', message ].join('');
 };
 
 // Set the maximum log level. The default level is "info".
