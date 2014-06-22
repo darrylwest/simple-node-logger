@@ -9,7 +9,8 @@ A very simple multi-level logger for console and file inspired by Aaron Quint's 
 
 Installation
 ===
-npm install simple-node-logger --save
+
+    npm install simple-node-logger --save
 
 
 How to use
@@ -54,4 +55,4 @@ License
 Apache 2.0
 
 - - -
-<p><small><em>version 0.9.71</em></small></p>
+<p><small><em>version 0.9.72</em></small></p>
