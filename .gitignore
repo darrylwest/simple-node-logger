@@ -1,2 +1,11 @@
+__MAC*
+.DS_Store
+*.gz
+dist
+.idea
+*.bak
 *.log
+*.swp
 node_modules
+jsdoc
+query-db
