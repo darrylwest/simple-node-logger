@@ -1,14 +1,26 @@
 
 all:
+	@make npm
 	@make test
 
+npm:
+	@npm install
+
 test:
-	@( node test/file-log.js )
-	@( node test/file-only.js )
-	@( node test/stdout-log.js )
+	@( [ -d node_modules ] || make npm )
+	@( grunt test jshint )
 
-publish:
-	@( npm publish ./ )
+jshint:
+	@( [ -d node_modules ] || make npm )
+	@( grunt jshint )
 
+watch:
+	@( grunt watchall )
+
+docs:
+	@( grunt jsdoc )
+
+.PHONY:	npm
 .PHONY:	test
-.PHONY:	publish
+.PHONY:	jshit
+.PHONY:	watch
