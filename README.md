@@ -1,11 +1,11 @@
-simple-node-logger
-==================
+# Simple Node Logger
+- - -
 
-A very simple multi-level logger for console and file inspired by Aaron Quint's [quirkey node-logger](http://github.com/quirkey/node-logger).  This logger is suited for simple command line type projects that may or may not go into production.  For a more compete production logger see the winson project.
+A very simple multi-level logger for console and file.
 
-- five levels: debug, info, warn, error and fatal levels
-- default format: Level [ time ] message [, message, object, etc ]
-- write to console, file or both
+- levels: trace, debug, info, warn, error and fatal levels (plus all and off)
+- flexible appender/formatters with default to HH:mm:ss.SSS LEVEL message
+- add appenders to send output to console, file, etc
 
 Installation
 ===
@@ -16,7 +16,7 @@ Installation
 How to use
 ===
 	// create a stdout console logger
-	var log = require('simple-node-logger').createLogger();
+	var log = new require('simple-node-logger').createLogger();
 
 or
 

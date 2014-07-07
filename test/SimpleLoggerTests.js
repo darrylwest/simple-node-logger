@@ -23,7 +23,9 @@ describe('SimpleLogger', function() {
         var logger = new SimpleLogger( createOptions() ),
             methods = [
                 'createLogger',
-                'createConsoleAppender'
+                'createConsoleAppender',
+                'createFileAppender',
+                'addAppender'
             ];
 
         it('should create an instance of SimpleLogger', function() {

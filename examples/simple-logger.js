@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 
-var SimpleLogger = require('../lib/SimpleLogger'),
-    log;
-
-log = new SimpleLogger().createLogger();
+var log = require('../lib/SimpleLogger').createSimpleLogger();
 
 log.trace('this is a simple trace log statement (should not show)');
 log.debug('this is a simple debug log statement (should not show)');
