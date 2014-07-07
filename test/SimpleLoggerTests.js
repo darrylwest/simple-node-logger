@@ -22,7 +22,8 @@ describe('SimpleLogger', function() {
     describe('#instance', function() {
         var logger = new SimpleLogger( createOptions() ),
             methods = [
-                'createLogger'
+                'createLogger',
+                'createConsoleAppender'
             ];
 
         it('should create an instance of SimpleLogger', function() {
@@ -35,6 +36,14 @@ describe('SimpleLogger', function() {
             methods.forEach(function(method) {
                 logger[ method ].should.be.a( 'function' );
             });
+        });
+    });
+
+    describe('createLogger', function() {
+        var logger = new SimpleLogger( createOptions() );
+
+        it('should create a basic logger with console appender', function() {
+            
         });
     });
 });
