@@ -1,0 +1,59 @@
+# Simple Node Logger
+==================
+
+A simple multi-level logger for console and file. This logger is light weight enough to use for simple command line projects while being robust enough for production applications.  Features include...
+
+- multiple log levels: all, trace, debug, info, warn, error, fatal, and off levels
+- multiple appender targets: console, file, rolling file, etc
+- flexible formattters: each log appender can be configured with it's own formatter and log level
+- plugable: create your own appenders and formatters
+
+Installation
+===
+
+    npm install simple-node-logger --save
+
+
+How to use
+===
+	// create a console logger
+	var log = require('simple-node-logger').createLogger();
+
+or
+
+	// create a stdout and file logger
+	var log = require('simple-node-logger').createLogger('project.log');
+
+or
+
+	// create a file only file logger
+	var log = require('simple-node-logger').createFileLogger('project.log');
+	
+The first use will simply log to the console.  The second will log to the console and to the project.log file.  The third logs to the file only.
+
+Log Levels
+===
+The default level is 'info' but the log level can be set by doing this:
+
+	log.setLevel('warn');
+	
+This sets the log level to warn and suppresses debug and info messages.
+
+Default Format
+===
+The default format is LEVEL [ time ] message. For example, the log message:
+
+	log.info('subscription to ', channel, ' accepted at ', new Date().toJSON());
+
+Yields:
+
+	INFO [14:14:21.363]  subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
+	
+
+
+License
+===
+Apache 2.0
+
+- - -
+<p><small><em>darryl.west@raincitysoftware.com | version 0.91.73</em></small></p>
