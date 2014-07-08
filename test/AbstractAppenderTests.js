@@ -36,7 +36,8 @@ describe('AbstractAppender', function() {
             methods = [
                 'getTypeName',
                 'formatEntry',
-                'formatLevel'
+                'formatLevel',
+                'formatTimestamp'
             ];
 
         it('should create an instance of AbstractAppender', function() {
