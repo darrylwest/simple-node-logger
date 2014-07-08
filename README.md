@@ -7,52 +7,51 @@ A very simple multi-level logger for console and file.
 - flexible appender/formatters with default to HH:mm:ss.SSS LEVEL message
 - add appenders to send output to console, file, etc
 
-Installation
-===
+## Installation
 
     npm install simple-node-logger --save
 
 
-How to use
-===
+## How to use
+
 	// create a stdout console logger
-	var log = new require('simple-node-logger').createLogger();
+	var log = new require('simple-node-logger').createSimpleLogger();
 
 or
 
 	// create a stdout and file logger
-	var log = require('simple-node-logger').createLogger('project.log');
+	var log = require('simple-node-logger').createSimpleLogger('project.log');
 
 or
 
 	// create a file only file logger
-	var log = require('simple-node-logger').createFileLogger('project.log');
+	var log = require('simple-node-logger').createSimpleFileLogger('project.log');
 	
 The first use will simply log to the console.  The second will log to the console and to the project.log file.  The third logs to the file only.
 
-Log Levels
-===
+## Log Levels
+
 The default level is 'info' but the log level can be set by doing this:
 
 	log.setLevel('warn');
 	
 This sets the log level to warn and suppresses debug and info messages.
 
-Default Format
-===
-The default format is LEVEL [ time ] message. For example, the log message:
+## Default Format
+
+The default format is HH:mm:ss.SSS LEVEL message. For example, the log message:
 
 	log.info('subscription to ', channel, ' accepted at ', new Date().toJSON());
 
 Yields:
 
-	INFO [14:14:21.363]  subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
+	14:14:21.363 INFO  subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
 	
 
 
-License
-===
+## License
+
 Apache 2.0
 
 - - -
-<p><small><em>version 0.9.72</em></small></p>
+<p><small><em>version 0.91.72</em></small></p>
