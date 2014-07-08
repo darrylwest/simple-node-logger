@@ -37,7 +37,8 @@ describe('ConsoleAppender', function() {
                 'formatter',
                 'write',
                 'getTypeName',
-                'formatEntry'
+                'formatEntry',
+                'formatLevel'
             ];
 
         it('should create an instance of ConsoleAppender', function() {
