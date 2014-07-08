@@ -68,6 +68,28 @@ The examples folder includes a handful of simple to not so simple cases for cons
 
 Adding a new appender is as easy as implementing write( logEntry ).  The easiest way to implement is by extending the base class AbstractAppender.  You may also easily override the formatting, order, etc by overriding or providing your own abstract or concrete appender.
 
+For example, you can extend the AbstractAppender to create a JSON appender by doing this:
+
+    var AbstractAppender = require('simple-node-logger').AbstractAppender;
+
+    var JSONAppender = function() {
+    	'use strict';
+    	var appender = this;
+    	
+        var opts = {
+            typeName:'JSONAppender'
+        };
+        
+        AbstractAppender.extend( this, opts );
+        
+        // format and write all entry/statements
+        this.write = function(entry) {
+        	var fields = appender.formatEntry( entry );
+        	
+        	process.stdout.write( JSON.stringify( entry ) + '\n' );
+        };
+    };
+
 ## Unit Tests
 
 All unit tests are written in mocha/chai/should and can be run from the command line by doing this:
@@ -85,4 +107,4 @@ There is also a file watcher that can be invoked with this:
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.77</em></small></p>
+<p><small><em>version 0.91.78</em></small></p>
