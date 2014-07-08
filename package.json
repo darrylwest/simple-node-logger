@@ -1,8 +1,8 @@
 {
   "name": "simple-node-logger",
-  "version": "0.91.72",
+  "version": "0.91.73",
   "description": "'simple node console and file logger suitable for command line projects'",
-  "main": "logger.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/darrylwest/simple-node-logger.git"
