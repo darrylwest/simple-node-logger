@@ -32,7 +32,8 @@ describe('Logger', function() {
                 'setAppenders',
                 'addAppender',
                 'removeAppender',
-                'getAppenders'
+                'getAppenders',
+                '__protected'
             ];
 
         it('should create an instance of Logger', function() {
