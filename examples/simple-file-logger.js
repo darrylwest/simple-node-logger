@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
-var log = require('../lib/SimpleLogger').createSimpleFileLogger( './logs/file-test.log' );
+var filename = './logs/file-test.log';
+console.log('opening log file: ', filename);
+
+var log = require('../lib/SimpleLogger').createSimpleFileLogger( filename );
 
 log.trace('this is a simple trace log statement (should not show)');
 log.debug('this is a simple debug log statement (should not show)');
