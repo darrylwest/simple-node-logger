@@ -6,6 +6,9 @@ A very simple multi-level logger for console and file.
 - levels: trace, debug, info, warn, error and fatal levels (plus all and off)
 - flexible appender/formatters with default to HH:mm:ss.SSS LEVEL message
 - add appenders to send output to console, file, etc
+- change log levels on the fly
+- domain and category columns
+- overridable format methods in base appender
 
 ## Installation
 
