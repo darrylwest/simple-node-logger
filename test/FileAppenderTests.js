@@ -37,8 +37,9 @@ describe('FileAppender', function() {
             methods = [
                 'formatter',
                 'write',
+                'closeWriter',
                 'getTypeName',
-                'closeWriter'
+                'formatEntry'
             ];
 
         it('should create an instance of FileAppender', function() {
