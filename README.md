@@ -40,7 +40,9 @@ The default level is 'info' but the log level can be set by doing this:
 	
 This sets the log level to warn and suppresses debug and info messages.
 
-## Default Format
+## Default Formats
+
+### Simple Logger
 
 The default format is HH:mm:ss.SSS LEVEL message. For example, the log message:
 
@@ -50,6 +52,26 @@ Yields:
 
 	14:14:21.363 INFO  subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
 	
+### Category Logger
+
+If you create a logger with a category name, all log statements will include this category.  Typically a category is a class or module name.  If you create a logger with the category name 'MyCategory', the log statement would format like this:
+
+	 14:14:21.363 INFO  MyCategory subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
+	 
+## Examples
+
+The examples folder includes a handful of simple to not so simple cases for console, file, multi-appender, category, etc.
+
+## Unit Tests
+
+All unit tests are written in mocha/chai/should and can be run from the command line by doing this:
+
+	make test
+	
+There is also a file watcher that can be invoked with this:
+
+	make watch
+	
 
 
 ## License
@@ -57,4 +79,4 @@ Yields:
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.73</em></small></p>
+<p><small><em>version 0.91.74</em></small></p>
