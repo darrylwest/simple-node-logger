@@ -62,6 +62,12 @@ If you create a logger with a category name, all log statements will include thi
 
 The examples folder includes a handful of simple to not so simple cases for console, file, multi-appender, category, etc.
 
+## Customizations
+
+### Appenders
+
+Adding a new appender is as easy as implementing write( logEntry ).  The easiest way to implement is by extending the base class AbstractAppender.  You may also easily override the formatting, order, etc by overriding or providing your own abstract or concrete appender.
+
 ## Unit Tests
 
 All unit tests are written in mocha/chai/should and can be run from the command line by doing this:
@@ -79,4 +85,4 @@ There is also a file watcher that can be invoked with this:
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.74</em></small></p>
+<p><small><em>version 0.91.75</em></small></p>

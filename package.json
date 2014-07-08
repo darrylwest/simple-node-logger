@@ -1,12 +1,19 @@
 {
   "name": "simple-node-logger",
-  "version": "0.91.74",
+  "version": "0.91.75",
   "description": "'simple node console and file logger suitable for command line projects'",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/darrylwest/simple-node-logger.git"
   },
+  "keywords": [
+      "log",
+      "logger",
+      "multi-appender",
+      "file logger",
+      "console logger"
+  ],
   "dependencies": {
     "lodash": "^2.4.1",
     "moment": "^2.7.0",
