@@ -100,11 +100,22 @@ There is also a file watcher that can be invoked with this:
 
 	make watch
 	
+## Mocks
 
+Mocks used for testing include MockLogger and MockAppender.  Typically you would use MockLogger for unit tests like this:
+
+    var MockLogger = require('simple-node-logger').mocks.MockLogger;
+
+    var log = MockLogger.createLogger('MyCategory');
+
+    log.info('this is a log statement');
+    log.getLogEnties().length.should.equal( 1 );
+    
+MockLogger extends Logger and uses MockAppender to capture log entries.
 
 ## License
 
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.78</em></small></p>
+<p><small><em>version 0.91.79</em></small></p>
