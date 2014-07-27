@@ -139,7 +139,7 @@ For example, you can extend the AbstractAppender to create a JSON appender by do
         };
     };
 
-## Unit Tests
+## Tests
 
 All unit tests are written in mocha/chai/should and can be run from the command line by doing this:
 
@@ -148,6 +148,7 @@ All unit tests are written in mocha/chai/should and can be run from the command 
 There is also a file watcher that can be invoked with this:
 
 	make watch
+	
 	
 ## Mocks
 
