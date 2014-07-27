@@ -51,7 +51,7 @@ The default level is 'info' but the log level can be set by doing this:
 	
 This sets the log level to warn and suppresses debug and info messages.
 
-## Default Formats
+## Log Statement Formats
 
 ### Simple Logger
 
@@ -75,7 +75,16 @@ If you create a logger with a category name, all log statements will include thi
 
 ### File
 
-### Rolling File
+### Rolling File Appender
+
+The rolling file appender requires a valid date format and file name pattern.  The filename must contain the key word <DATE> that will be replaced with the formatted date.  The configuration must also include a target log directory where the files will be written.
+
+#### Valid Filename Patterns
+
+	mylog-<DATE>.log
+	ApplicationName.log.<DATE>
+	<DATE>.log
+	<DATE>
 
 #### Valid Date Formats
 
