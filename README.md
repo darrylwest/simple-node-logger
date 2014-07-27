@@ -73,9 +73,15 @@ If you create a logger with a category name, all log statements will include thi
 
 ### Console
 
+Writes to the console.  This is the simplest appender typically used for command line applications or for development.
+
 ### File
 
+Writes to the specified file.  This appender is typically used for services that periodically start and stop or that have a limited number of log statements.  An example would be to log just error & fatal messages separate from other logs.
+
 ### Rolling File Appender
+
+The rolling file appender offers a full production logger where files roll based on date and time.  The minimum roll time is a single hour.  A typical application would be a production environment where log files are rolled throughout the day then archived to a separate location.
 
 The rolling file appender requires a valid date format and file name pattern.  The filename must contain the key word <DATE> that will be replaced with the formatted date.  The configuration must also include a target log directory where the files will be written.
 
