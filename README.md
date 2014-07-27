@@ -167,4 +167,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.81</em></small></p>
+<p><small><em>version 0.91.82</em></small></p>
