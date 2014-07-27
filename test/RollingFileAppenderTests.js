@@ -87,6 +87,10 @@ describe('RollingFileAppender', function() {
 
             appender.checkForRoll( now ).should.equal( false );
 
+            // now add a second
+            now = now.add('s', 1 );
+            appender.checkForRoll( now ).should.equal( false );
+
             // now add a few hours
             now = now.add('h', 4 );
             appender.checkForRoll( now ).should.equal( false );
@@ -107,6 +111,7 @@ describe('RollingFileAppender', function() {
             now = now.add('day', 1 );
             appender.checkForRoll( now ).should.equal( true );
         });
+
     });
 
     describe('createFileName', function() {
