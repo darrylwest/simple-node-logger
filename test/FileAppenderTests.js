@@ -28,6 +28,7 @@ describe('FileAppender', function() {
 
         opts.level = 'debug';
         opts.logFilePath = '/tmp/log-test.log';
+        opts.autoOpen = false;
 
         return opts;
     };

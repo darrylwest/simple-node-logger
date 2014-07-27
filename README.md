@@ -4,7 +4,7 @@
 A simple multi-level logger for console, file, and rolling file appenders.
 
 - levels: trace, debug, info, warn, error and fatal levels (plus all and off)
-- flexible appender/formatters with default to HH:mm:ss.SSS LEVEL message
+- flexible appender/formatters with default to HH:MM:ss.SSS LEVEL message
 - add appenders to send output to console, file, etc
 - change log levels on the fly
 - domain and category columns
@@ -32,10 +32,11 @@ or
 	
 or
 
-    // create a rolling file logger based on date and size
+    // create a rolling file logger based on date/time
     var opts = {
         logDirectory:'/mylogfiles',
-        fileNamePattern:'roll-{YYYY.MM.DD.nn}.log'
+        fileNamePattern:'roll-<DATE>.log',
+        dateFormat:'YYYY.MM.DD'
     };
 
     var log = require('simple-node-logger').createRollingFileLogger( opts );
@@ -68,6 +69,29 @@ If you create a logger with a category name, all log statements will include thi
 
 	 14:14:21.363 INFO  MyCategory subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
 	 
+## Appenders
+
+### Console
+
+### File
+
+### Rolling File
+
+#### Valid Date Formats
+
+Date formats must map to acceptable file names so have more restrictions than typical dates.  If you use delimiters, you are restricted to a dash or dot delimiter to separate year, month, day and hour.  Valid examples include:
+
+	MMDD  // simple month day that rolls at midnight (no delimiters)
+	YYYY.MM.DD-HH // year month day and hour that can roll up to once per hour
+	YYYY-MM-DD.a // year month day and am/pm that rolls twice per day
+	YYYY-MMM-DD // year month day where month is the short name (Mar, Apr, etc)
+	
+The default format YYYY.MM.DD is used if the format is not supplied.
+
+## Dynamic Configuration
+
+Create a javascript configuration that implements 'readConfig' to return configuration details.  
+
 ## Examples
 
 The examples folder includes a handful of simple to not so simple cases for console, file, multi-appender, category, etc.
