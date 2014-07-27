@@ -7,6 +7,7 @@
 var should = require('chai').should(),
     dash = require( 'lodash' ),
     casual = require( 'casual' ),
+    path = require( 'path' ),
     moment = require('moment' ),
     Logger = require('../lib/Logger' ),
     RollingFileAppender = require('../lib/RollingFileAppender');
@@ -53,6 +54,11 @@ describe('RollingFileAppender', function() {
             should.exist( appender );
             appender.should.be.instanceof( RollingFileAppender );
             appender.getTypeName().should.equal('RollingFileAppender');
+
+            var p = appender.__protected();
+            should.exist( p );
+            p.writers.length.should.equal( 0 );
+            p.openWriter.should.be.a( 'function' );
         });
 
         it('should have all expected methods by size and type', function() {
@@ -60,6 +66,46 @@ describe('RollingFileAppender', function() {
             methods.forEach(function(method) {
                 appender[ method ].should.be.a( 'function' );
             });
+        });
+    });
+
+    describe('checkForRoll', function() {
+        var opts = createOptions();
+
+        opts.dateFormat = 'YYYY.MM.DD';
+
+        it('should return false when the date stays within the same day', function() {
+            var now = moment( '2014-01-01T00:00:00' ),
+                fn = opts.fileNamePattern.replace( /<DATE>/i, now.format( opts.dateFormat ) ),
+                appender,
+                p;
+
+
+            opts.currentFile = path.join( process.env.HOME, fn );
+            appender = new RollingFileAppender( opts );
+            p = appender.__protected();
+
+            appender.checkForRoll( now ).should.equal( false );
+
+            // now add a few hours
+            now = now.add('h', 4 );
+            appender.checkForRoll( now ).should.equal( false );
+        });
+
+        it('should return true when the day changes', function() {
+            var now = moment(),
+                fn = opts.fileNamePattern.replace( /<DATE>/i, now.format( opts.dateFormat ) ),
+                appender,
+                p;
+
+
+            opts.currentFile = path.join( process.env.HOME, fn );
+            appender = new RollingFileAppender( opts );
+            p = appender.__protected();
+
+            // now add a few hours
+            now = now.add('day', 1 );
+            appender.checkForRoll( now ).should.equal( true );
         });
     });
 
