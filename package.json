@@ -1,7 +1,7 @@
 {
   "name": "simple-node-logger",
-  "version": "0.91.80",
-  "description": "A simple node console and file logger suitable for command line projects.",
+  "version": "0.91.81",
+  "description": "A simple node console and file logger suitable for small and large projects.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
       "logger",
       "multi-appender",
       "file logger",
+      "rolling file logger",
       "console logger"
   ],
   "dependencies": {

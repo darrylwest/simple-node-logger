@@ -1,7 +1,7 @@
 # Simple Node Logger
 - - -
 
-A very simple multi-level logger for console and file.
+A simple multi-level logger for console, file, and rolling file appenders.
 
 - levels: trace, debug, info, warn, error and fatal levels (plus all and off)
 - flexible appender/formatters with default to HH:mm:ss.SSS LEVEL message
@@ -30,7 +30,17 @@ or
 	// create a file only file logger
 	var log = require('simple-node-logger').createSimpleFileLogger('project.log');
 	
-The first use will simply log to the console.  The second will log to the console and to the project.log file.  The third logs to the file only.
+or
+
+    // create a rolling file logger based on date and size
+    var opts = {
+        logDirectory:'/mylogfiles',
+        fileNamePattern:'roll-{YYYY.MM.DD.nn}.log'
+    };
+
+    var log = require('simple-node-logger').createRollingFileLogger( opts );
+
+The first use will simply log to the console.  The second will log to the console and to the project.log file.  The third logs to the file only. The forth creates a rolling file log system in the target log folder.
 
 ## Log Levels
 
@@ -118,4 +128,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.80</em></small></p>
+<p><small><em>version 0.91.81</em></small></p>
