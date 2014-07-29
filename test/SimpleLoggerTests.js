@@ -29,12 +29,16 @@ describe('SimpleLogger', function() {
                 'createRollingFileAppender',
                 'addAppender',
                 'getAppenders',
+                'getLoggers',
                 '__protected'
             ];
 
         it('should create an instance of SimpleLogger', function() {
             should.exist( manager );
             manager.should.be.instanceof( SimpleLogger );
+
+            manager.getAppenders().length.should.equal( 0 );
+            manager.getLoggers().length.should.equal( 0 );
         });
 
         it('should have all expected methods by size and type', function() {
@@ -99,14 +103,37 @@ describe('SimpleLogger', function() {
     });
 
     describe('createConsoleAppender', function() {
-        it('should create a new console appender and add it to the appenders list');
+        var manager = new SimpleLogger( createOptions() );
+
+        it('should create a new console appender and add it to the appenders list', function() {
+            var appender = manager.createConsoleAppender();
+            manager.getAppenders().length.should.equal( 1 );
+        });
     });
 
     describe('createFileAppender', function() {
-        it('should create a new file appender and add it to the appenders list');
+        var manager = new SimpleLogger( createOptions() );
+
+        it('should create a new file appender and add it to the appenders list', function() {
+            var appender = manager.createFileAppender( { logFilePath:'/dev/null' });
+            manager.getAppenders().length.should.equal( 1 );
+        });
     });
 
     describe('createRollingFileAppender', function() {
-        it('should create a new rolling file appender and add it to the appenders list');
+        var manager = new SimpleLogger( createOptions() );
+
+        it('should create a new rolling file appender and add it to the appenders list', function() {
+            var opts = {},
+                appender;
+
+            opts.level = 'debug';
+            opts.logDirectory = process.env.HOME + '/logs';
+            opts.fileNamePattern = 'app-<Date>.log';
+            opts.autoOpen = false;
+
+            appender = manager.createRollingFileAppender( opts );
+            manager.getAppenders().length.should.equal( 1 );
+        });
     });
 });
