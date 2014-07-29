@@ -7,10 +7,8 @@ var opts = {
     dateFormat:'YYYY.MM.DD-HH'
 };
 
-var SimpleLogger = require('../lib/SimpleLogger'),
-    manager = new SimpleLogger( opts );
+var log = require('../lib/SimpleLogger').createRollingFileLogger( opts );
 
-manager.addAppender( manager.creat
 setInterval(function() {
     // write some stuff...
     log.trace('this is a simple trace log statement (should not show)');
