@@ -8,7 +8,8 @@ var should = require('chai').should(),
     dash = require( 'lodash' ),
     casual = require( 'casual' ),
     Logger = require('../lib/Logger' ),
-    SimpleLogger = require( '../lib/SimpleLogger');
+    SimpleLogger = require( '../lib/SimpleLogger' ),
+    MockAppender = require( './mocks/MockAppender');
 
 describe('SimpleLogger', function() {
     'use strict';
@@ -20,33 +21,35 @@ describe('SimpleLogger', function() {
     };
 
     describe('#instance', function() {
-        var logger = new SimpleLogger( createOptions() ),
+        var manager = new SimpleLogger( createOptions() ),
             methods = [
                 'createLogger',
                 'createConsoleAppender',
                 'createFileAppender',
+                'createRollingFileAppender',
                 'addAppender',
+                'getAppenders',
                 '__protected'
             ];
 
         it('should create an instance of SimpleLogger', function() {
-            should.exist( logger );
-            logger.should.be.instanceof( SimpleLogger );
+            should.exist( manager );
+            manager.should.be.instanceof( SimpleLogger );
         });
 
         it('should have all expected methods by size and type', function() {
-            dash.methods( logger ).length.should.equal( methods.length );
+            dash.methods( manager ).length.should.equal( methods.length );
             methods.forEach(function(method) {
-                logger[ method ].should.be.a( 'function' );
+                manager[ method ].should.be.a( 'function' );
             });
         });
     });
 
     describe('createLogger', function() {
-        var logger = new SimpleLogger( createOptions() );
+        var manager = new SimpleLogger( createOptions() );
 
         it('should create a basic logger with console appender', function() {
-            var log = logger.createLogger('MyCategory', 'warn');
+            var log = manager.createLogger('MyCategory', 'warn');
 
             should.exist( log );
             log.__protected().category.should.equal( 'MyCategory' );
@@ -77,7 +80,33 @@ describe('SimpleLogger', function() {
             log.__protected().domain.should.equal( opts.domain );
 
             // default to a single console appender
-            log.getAppenders().length.should.equal( 1 );
+            log.getAppenders().length.should.equal( 0 );
         });
+    });
+
+    describe('addAppender', function() {
+        var manager = new SimpleLogger( createOptions() );
+
+        it('should add a new appender to the list', function() {
+            manager.getAppenders().length.should.equal( 0 );
+
+            var appender = manager.addAppender( new MockAppender() );
+
+            should.exist( appender );
+            appender.should.be.instanceof( MockAppender );
+            manager.getAppenders().length.should.equal( 1 );
+        });
+    });
+
+    describe('createConsoleAppender', function() {
+        it('should create a new console appender and add it to the appenders list');
+    });
+
+    describe('createFileAppender', function() {
+        it('should create a new file appender and add it to the appenders list');
+    });
+
+    describe('createRollingFileAppender', function() {
+        it('should create a new rolling file appender and add it to the appenders list');
     });
 });

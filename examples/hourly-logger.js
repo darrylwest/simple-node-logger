@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
-
 var opts = {
+    domain:'Domain-A',
     logDirectory: __dirname + '/../logs',
     fileNamePattern: 'hourly-test-<date>.log',
     dateFormat:'YYYY.MM.DD-HH'
 };
 
-var log = require('../lib/SimpleLogger').createRollingFileLogger( opts );
+var SimpleLogger = require('../lib/SimpleLogger'),
+    manager = new SimpleLogger( opts );
 
+manager.addAppender( manager.creat
 setInterval(function() {
     // write some stuff...
     log.trace('this is a simple trace log statement (should not show)');
@@ -23,7 +25,7 @@ setInterval(function() {
     log.trace('this is a simple trace log statement (should show)');
     log.debug('this is a simple debug log statement (should show)');
 
-}, 1000);
+}, 800);
 
 var appender = log.getAppenders()[0];
 console.log('write to file: ', appender.__protected().currentFile );

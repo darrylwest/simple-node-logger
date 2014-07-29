@@ -3,8 +3,8 @@
 
 ## General
 
-* add socket client appender to write to socket logger
-* add dynamic config reader to enable level changes at runtime
+* add dynamic config capability; invoke conf.readLoggerConfig each 2 minutes
+* modify SimpleLogger to act as a log manager capable of managing multiple loggers
 
 ## Documentation
 
