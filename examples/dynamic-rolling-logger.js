@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
 var conf = {};
+
 conf.readLoggerConfig = function() {
     var opts = {
         logDirectory: __dirname + '/../logs',
         fileNamePattern: 'dynamic-<date>.log',
-        dateFormat:'YYYY.MM.DD-a'
+        dateFormat:'YYYY.MM.DD-a',
+        level:'info'
     };
 
     return opts;
@@ -23,17 +25,12 @@ log.warn('this is a simple warn log statement/entry');
 log.error('this is a simple error log statement/entry');
 log.fatal('this is a simple fatal log statement/entry');
 
-log.info('set the level to all');
-log.setLevel('all');
-log.trace('this is a simple trace log statement (should show)');
-log.debug('this is a simple debug log statement (should show)');
-
 var appender = log.getAppenders()[0];
 console.log('write to file: ', appender.__protected().currentFile );
 
 // rolling file writer uses interval, so we need to exit 
 setTimeout(function() {
-    console.log('exiting...');
-    process.exit( 0 );
+    log.info('changed level...');
+    // process.exit( 0 );
 }, 1000);
 
