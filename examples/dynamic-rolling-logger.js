@@ -11,7 +11,7 @@ var opts = {
     domain:'MyApplication-' + port,
     level:'info',
     loggerConfigFile: __dirname + '/logger-config.json',
-    refresh:2000
+    refresh:10 * 1000
 };
 
 console.log('config file: ', opts.loggerConfigFile);
@@ -30,7 +30,6 @@ console.log('write to file: ', appender.__protected().currentFile );
 
 // rolling file writer uses interval, so we need to exit 
 setTimeout(function() {
-    console.log('exiting...');
-    process.exit( 0 );
-}, 2000);
+    log.info('marking time: ', new Date().toJSON());
+}, 1000);
 

@@ -32,6 +32,7 @@ describe('SimpleLogger', function() {
                 'getAppenders',
                 'getLoggers',
                 'startRefreshThread',
+                'readConfig',
                 '__protected'
             ];
 
