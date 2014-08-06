@@ -30,3 +30,10 @@ log.debug('this is a simple debug log statement (should show)');
 
 var appender = log.getAppenders()[0];
 console.log('write to file: ', appender.__protected().currentFile );
+
+// rolling file writer uses interval, so we need to exit 
+setTimeout(function() {
+    console.log('exiting...');
+    process.exit( 0 );
+}, 1000);
+
