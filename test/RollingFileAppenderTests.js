@@ -41,6 +41,7 @@ describe('RollingFileAppender', function() {
             methods = [
                 'formatter',
                 'write',
+                'setLevel',
                 'checkForRoll',
                 'createFileName',
                 '__protected',

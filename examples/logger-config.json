@@ -1,20 +1,26 @@
 {
-    "appenders":{
-        "RollingFileAppender":{
-            "level":"info"
+    "appenders":[ 
+        {
+            "typeName":"RollingFileAppender",
+            "level":"debug"
         },
-        "ConsoleAppender":{
+        {
+            "typeName":"ConsoleAppender",
             "level":"fatal"
         }
-    },
-    "loggers":{
-        "categories":{
-            "ApplicationFactory":{
-                "level":"warn"
-            },
-            "CalculationDelegate":{
-                "level":"debug"
-            }
+    ],
+    "loggers":[
+        {
+            "category":"all",
+            "level":"info"
+        },
+        {
+            "category":"ApplicationFactory",
+            "level":"warn"
+        },
+        {
+            "category":"CalculationDelegate",
+            "level":"debug"
         }
-    }
+    ]
 }
