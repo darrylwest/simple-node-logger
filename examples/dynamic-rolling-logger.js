@@ -11,7 +11,7 @@ var opts = {
     domain:'MyApplication-' + port,
     level:'info',
     loggerConfigFile: __dirname + '/logger-config.json',
-    refresh:60 * 1000 // read/refresh each 60 seconds
+    refresh:10 * 1000 // read/refresh each 60 seconds
 };
 
 console.log('config file: ', opts.loggerConfigFile);
@@ -30,9 +30,10 @@ console.log('write to file: ', appender.__protected().currentFile );
 
 // rolling file writer uses interval, so we need to exit 
 setInterval(function() {
-    log.debug('trace time: ', new Date().toJSON());
+    log.trace('trace time: ', new Date().toJSON());
     log.debug('debug time: ', new Date().toJSON());
     log.info('info time: ', new Date().toJSON());
     log.warn('warn mark tm');
+    log.error('error mark tm');
 }, 1000);
 

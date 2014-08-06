@@ -12,7 +12,7 @@
     "loggers":[
         {
             "category":"all",
-            "level":"info"
+            "level":"debug"
         },
         {
             "category":"ApplicationFactory",
