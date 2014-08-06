@@ -1,11 +1,11 @@
 # Simple Node Logger
 - - -
 
-A simple multi-level logger for console, file, and rolling file appenders.
+A simple multi-level logger for console, file, and rolling file appenders.  Features include:
 
 - levels: trace, debug, info, warn, error and fatal levels (plus all and off)
 - flexible appender/formatters with default to HH:MM:ss.SSS LEVEL message
-- add appenders to send output to console, file, etc
+- add appenders to send output to console, file, rolling file, etc
 - change log levels on the fly
 - domain and category columns
 - overridable format methods in base appender
@@ -45,7 +45,7 @@ The first use will simply log to the console.  The second will log to the consol
 
 ## Log Levels
 
-The default level is 'info' but the log level can be set by doing this:
+The log levels include the standard set: trace, debug, info, warn, error and fatal.  The default level is info.  The log level can be set at run-time by doing this:
 
 	log.setLevel('warn');
 	
@@ -168,4 +168,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.85</em></small></p>
+<p><small><em>version 0.91.86</em></small></p>
