@@ -1,0 +1,20 @@
+{
+    "appenders":{
+        "RollingFileAppender":{
+            "level":"info"
+        },
+        "ConsoleAppender":{
+            "level":"fatal"
+        }
+    },
+    "loggers":{
+        "categories":{
+            "ApplicationFactory":{
+                "level":"warn"
+            },
+            "CalculationDelegate":{
+                "level":"debug"
+            }
+        }
+    }
+}

@@ -1,21 +1,21 @@
 #!/usr/bin/env node
 
-var conf = {};
+var port = 18034;
 
-conf.readLoggerConfig = function() {
-    var opts = {
-        logDirectory: __dirname + '/../logs',
-        fileNamePattern: 'dynamic-<date>.log',
-        dateFormat:'YYYY.MM.DD-a',
-        level:'info'
-    };
+// confirure to read the config file each 2 minutes...
 
-    return opts;
+var opts = {
+    logDirectory: __dirname + '/../logs',
+    fileNamePattern: 'dynamic-<date>.log',
+    dateFormat:'YYYY.MM.DD-a',
+    domain:'MyApplication-' + port,
+    level:'info',
+    loggerConfigFile: __dirname + '/logger-config.json',
+    refresh:2000
 };
 
-// console.log(conf.readLoggerConfig() );
-
-var log = require('../lib/SimpleLogger').createRollingFileLogger( conf );
+console.log('config file: ', opts.loggerConfigFile);
+var log = require('../lib/SimpleLogger').createRollingFileLogger( opts );
 
 // write some stuff...
 log.trace('this is a simple trace log statement (should not show)');
@@ -30,7 +30,7 @@ console.log('write to file: ', appender.__protected().currentFile );
 
 // rolling file writer uses interval, so we need to exit 
 setTimeout(function() {
-    log.info('changed level...');
-    // process.exit( 0 );
-}, 1000);
+    console.log('exiting...');
+    process.exit( 0 );
+}, 2000);
 
