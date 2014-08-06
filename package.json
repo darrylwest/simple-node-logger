@@ -1,6 +1,6 @@
 {
   "name": "simple-node-logger",
-  "version": "0.91.88",
+  "version": "0.91.89",
   "description": "A simple node console and file logger suitable for small, medium and large projects.",
   "main": "index.js",
   "repository": {
