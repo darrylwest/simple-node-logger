@@ -173,4 +173,28 @@ describe('SimpleLogger', function() {
             process.nextTick( manager.startRefreshThread );
         });
     });
+
+    describe('readConfig', function() {
+        var opts = createOptions(),
+            manager;
+
+        opts.loggerConfigFile = __dirname + '/fixtures/logger-config.json';
+        opts.refresh = 2000;
+
+        manager = new SimpleLogger( opts );
+
+        it('should read and parse a valid configuration file', function(done) {
+            var callback = function(err) {
+                should.not.exist( err );
+
+                // TODO test the appenders to see if at the correct level
+
+                // TODO test the loggers to see if at the correct level
+
+                done();
+            };
+
+            manager.readConfig( callback );
+        });
+    });
 });
