@@ -38,6 +38,7 @@ describe('FileAppender', function() {
             methods = [
                 'formatter',
                 'write',
+                'setLevel',
                 'closeWriter',
                 'getTypeName',
                 'formatEntry',

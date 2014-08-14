@@ -28,3 +28,7 @@ setInterval(function() {
 var appender = log.getAppenders()[0];
 console.log('write to file: ', appender.__protected().currentFile );
 
+setTimeout(function() {
+    console.log('exiting...');
+    process.exit( 0 );
+}, 2000);

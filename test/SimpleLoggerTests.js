@@ -6,6 +6,7 @@
  */
 var should = require('chai').should(),
     dash = require( 'lodash' ),
+    fs = require( 'fs' ),
     casual = require( 'casual' ),
     Logger = require('../lib/Logger' ),
     SimpleLogger = require( '../lib/SimpleLogger' ),
@@ -30,6 +31,9 @@ describe('SimpleLogger', function() {
                 'addAppender',
                 'getAppenders',
                 'getLoggers',
+                'setAllLoggerLevels',
+                'startRefreshThread',
+                'readConfig',
                 '__protected'
             ];
 
@@ -39,6 +43,11 @@ describe('SimpleLogger', function() {
 
             manager.getAppenders().length.should.equal( 0 );
             manager.getLoggers().length.should.equal( 0 );
+
+            var p = manager.__protected();
+
+            should.exist( p );
+            p.dfltLevel.should.equal( 'info' );
         });
 
         it('should have all expected methods by size and type', function() {
@@ -73,8 +82,9 @@ describe('SimpleLogger', function() {
         manager = new SimpleLogger( opts );
 
         it('should create a simple logger with a domain', function() {
-            manager.__protected().domain.should.equal( opts.domain );
-            manager.__protected().dfltLevel.should.equal( opts.level );
+            var p = manager.__protected();
+            p.domain.should.equal( opts.domain );
+            p.dfltLevel.should.equal( opts.level );
         });
 
         it('should create a log with specified domain, category and level', function() {
@@ -134,6 +144,57 @@ describe('SimpleLogger', function() {
 
             appender = manager.createRollingFileAppender( opts );
             manager.getAppenders().length.should.equal( 1 );
+        });
+    });
+
+    describe('startRefreshThread', function() {
+        var opts = createOptions(),
+            manager;
+
+        opts.loggerConfigFile = __dirname + '/fixtures/logger-config.json';
+        opts.refresh = 2000;
+
+        manager = new SimpleLogger( opts );
+
+        it('should start refresh thread if config file and refresh are set', function(done) {
+            manager.startRefreshThread = function() {
+                if (fs.existsSync( opts.loggerConfigFile ) && dash.isNumber( opts.refresh )) {
+                    console.log('file: ', opts.loggerConfigFile );
+                    var obj = JSON.parse( fs.readFileSync( opts.loggerConfigFile ));
+                    // console.log( obj );
+
+                    done();
+                } else {
+                    console.log('refresh: ', opts.refresh);
+                    console.log('file: ', opts.loggerConfigFile, ' does not exist?');
+                }
+            };
+
+            process.nextTick( manager.startRefreshThread );
+        });
+    });
+
+    describe('readConfig', function() {
+        var opts = createOptions(),
+            manager;
+
+        opts.loggerConfigFile = __dirname + '/fixtures/logger-config.json';
+        opts.refresh = 2000;
+
+        manager = new SimpleLogger( opts );
+
+        it('should read and parse a valid configuration file', function(done) {
+            var callback = function(err) {
+                should.not.exist( err );
+
+                // TODO test the appenders to see if at the correct level
+
+                // TODO test the loggers to see if at the correct level
+
+                done();
+            };
+
+            manager.readConfig( callback );
         });
     });
 });

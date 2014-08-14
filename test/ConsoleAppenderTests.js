@@ -36,6 +36,7 @@ describe('ConsoleAppender', function() {
             methods = [
                 'formatter',
                 'write',
+                'setLevel',
                 'getTypeName',
                 'formatEntry',
                 'formatLevel',

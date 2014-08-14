@@ -1,0 +1,22 @@
+{
+    "appenders":[ 
+        {
+            "typeName":"RollingFileAppender",
+            "level":"debug"
+        },
+        {
+            "typeName":"ConsoleAppender",
+            "level":"fatal"
+        }
+    ],
+    "loggers":[
+        {
+            "category":"ApplicationFactory",
+            "level":"warn"
+        },
+        {
+            "category":"CalculationDelegate",
+            "level":"debug"
+        }
+    ]
+}
