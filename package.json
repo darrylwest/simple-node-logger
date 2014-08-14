@@ -8,12 +8,12 @@
     "url": "git://github.com/darrylwest/simple-node-logger.git"
   },
   "keywords": [
-      "log",
-      "logger",
-      "multi-appender",
-      "file logger",
-      "rolling file logger",
-      "console logger"
+    "log",
+    "logger",
+    "multi-appender",
+    "file logger",
+    "rolling file logger",
+    "console logger"
   ],
   "dependencies": {
     "lodash": "^2.4.1",
@@ -34,6 +34,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-jsdoc": "^0.5.4",
     "grunt-mocha-test": "~0.8.1",
+    "grunt-nsp-package": "0.0.5",
     "jshint-stylish": "~0.1.3",
     "load-grunt-tasks": "~0.1.0",
     "mocha": "~1.16.2",
