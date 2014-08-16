@@ -1,6 +1,8 @@
 # Simple Node Logger
 - - -
 
+[![NPM version](https://badge.fury.io/js/node-service-commons.svg)](http://badge.fury.io/js/node-service-commons)
+
 A simple multi-level logger for console, file, and rolling file appenders.  Features include:
 
 - levels: trace, debug, info, warn, error and fatal levels (plus all and off)
@@ -168,4 +170,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.93</em></small></p>
+<p><small><em>version 0.91.94</em></small></p>

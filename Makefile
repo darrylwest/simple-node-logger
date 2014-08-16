@@ -8,7 +8,7 @@ npm:
 
 test:
 	@( [ -d node_modules ] || make npm )
-	@( grunt test jshint validate-package )
+	@( grunt test )
 
 jshint:
 	@( [ -d node_modules ] || make npm )
