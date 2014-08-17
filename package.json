@@ -8,7 +8,7 @@
     "url": "git://github.com/darrylwest/simple-node-logger.git"
   },
   "scripts":{
-    "test": "grunt test"
+    "test": "grunt testAll"
   },
   "keywords": [
     "log",
