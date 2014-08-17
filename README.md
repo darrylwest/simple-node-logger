@@ -43,8 +43,19 @@ or
     };
 
     var log = require('simple-node-logger').createRollingFileLogger( opts );
+    
+or
 
-The first use will simply log to the console.  The second will log to the console and to the project.log file.  The third logs to the file only. The forth creates a rolling file log system in the target log folder.
+	// create a log manager
+    var manager = require('simple-node-logger').createLogManager();
+    
+    manager.createConsoleAppender();
+    
+    var log = manager.createLogger('MyClass');
+    // create other logs and appenders...
+    
+
+The first use simply logs to the console.  The second logs to the console and to the project.log file.  The third logs to the file only. The forth creates a rolling file log system in the target log folder.  The fifth creates a log manager to enable you to add various appenders with multiple levels and create logs for each module or class.
 
 ## Log Levels
 
