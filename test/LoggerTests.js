@@ -33,6 +33,8 @@ describe('Logger', function() {
                 'addAppender',
                 'removeAppender',
                 'getAppenders',
+                'isDebug',
+                'isInfo',
                 '__protected'
             ];
 
@@ -108,6 +110,49 @@ describe('Logger', function() {
 
                 done();
             });
+        });
+    });
+
+    describe('#isLevel', function() {
+        it('should report isDebug as true if at or below debug', function() {
+            var log = new Logger( createOptions() );
+
+            log.setLevel('debug');
+            log.getLevel().should.equal( 'debug' );
+            log.isDebug().should.equal( true );
+            log.setLevel('trace');
+            log.isDebug().should.equal( true );
+            log.setLevel('all');
+            log.isDebug().should.equal( true );
+
+        });
+        it('should report isDebug as false if above debug', function() {
+            var log = new Logger( createOptions() );
+
+            log.setLevel('info');
+            log.getLevel().should.equal( 'info' );
+            log.isDebug().should.equal( false );
+
+        });
+
+        it('should report isInfo as true if at or below info', function() {
+            var log = new Logger( createOptions() );
+
+            log.setLevel('info');
+            log.getLevel().should.equal( 'info' );
+            log.isInfo().should.equal( true );
+            log.setLevel('trace');
+            log.isDebug().should.equal( true );
+            log.setLevel('all');
+            log.isDebug().should.equal( true );
+        });
+
+        it('should report isInfo as false if above info', function() {
+            var log = new Logger( createOptions() );
+
+            log.setLevel('warn');
+            log.getLevel().should.equal( 'warn' );
+            log.isInfo().should.equal( false );
         });
     });
 });
