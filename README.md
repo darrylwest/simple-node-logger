@@ -1,8 +1,7 @@
 # Simple Node Logger
 - - -
 
-[![NPM version](https://badge.fury.io/js/simple-node-logger.svg)](http://badge.fury.io/js/simple-node-logger)
-[![Build Status](https://travis-ci.org/darrylwest/simple-node-logger.svg?branch=develop)](https://travis-ci.org/darrylwest/simple-node-logger)
+[![NPM version](https://badge.fury.io/js/simple-node-logger.svg)](http://badge.fury.io/js/simple-node-logger) [![Build Status](https://travis-ci.org/darrylwest/simple-node-logger.svg?branch=develop)](https://travis-ci.org/darrylwest/simple-node-logger) [![Dependency Status](https://david-dm.org/darrylwest/simple-node-logger.svg)](https://david-dm.org/darrylwest/simple-node-logger)
 
 A simple multi-level logger for console, file, and rolling file appenders.  Features include:
 
@@ -182,4 +181,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>version 0.91.96</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.91.97</em></small></p>
