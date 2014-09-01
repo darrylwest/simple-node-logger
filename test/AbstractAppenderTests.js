@@ -83,7 +83,7 @@ describe('AbstractAppender', function() {
             list.forEach(function(obj) {
                 formatted = appender.formatObject( obj );
 
-                console.log( formatted );
+                // console.log( formatted );
                 formatted.should.be.a('string');
             });
         });
@@ -97,7 +97,7 @@ describe('AbstractAppender', function() {
 
             var formatted = appender.formatMessage( list );
 
-            console.log( formatted );
+            // console.log( formatted );
             should.exist( formatted );
             formatted.should.be.a('string');
         });
