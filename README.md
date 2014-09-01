@@ -159,7 +159,7 @@ The appenders have formatting messages that can be overridden at the abstract or
 - formatEntry(entry) - to override all formatting
 - formatMessage(msgList) - to override a list of messages
 - formatDate(value) - custom date, defaults to ISO8601
-- formatObject(value) - custome object, defaults to util.inspect, depth 2
+- formatObject(value) - custom object, defaults to json for regular objects
 
 ## Tests
 
@@ -190,4 +190,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014, rain city software | Version 0.92.10</em></small></p>
+<p><small><em>Copyright © 2014, rain city software | Version 0.92.11</em></small></p>
