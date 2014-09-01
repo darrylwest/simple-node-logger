@@ -48,7 +48,10 @@ describe('RollingFileAppender', function() {
                 'getTypeName',
                 'formatEntry',
                 'formatLevel',
-                'formatTimestamp'
+                'formatTimestamp',
+                'formatMessage',
+                'formatDate',
+                'formatObject'
             ];
 
         it('should create an instance of RollingFileAppender', function() {

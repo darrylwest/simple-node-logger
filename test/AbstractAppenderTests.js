@@ -37,7 +37,10 @@ describe('AbstractAppender', function() {
                 'getTypeName',
                 'formatEntry',
                 'formatLevel',
-                'formatTimestamp'
+                'formatTimestamp',
+                'formatMessage',
+                'formatDate',
+                'formatObject'
             ];
 
         it('should create an instance of AbstractAppender', function() {
@@ -54,7 +57,7 @@ describe('AbstractAppender', function() {
         });
     });
 
-    describe('formatFields', function() {
+    describe('formatEntry', function() {
         var appender = new AbstractAppender( createOptions() ),
             logger = createLogger();
 
@@ -64,6 +67,39 @@ describe('AbstractAppender', function() {
 
             should.exist( fields );
             fields.length.should.equal( 5 );
+        });
+    });
+
+    describe('formatObject', function() {
+        var appender = new AbstractAppender( createOptions() );
+
+        it('should format a complex object into human readable output', function() {
+            var formatted,
+                list = [
+                    { name:'flarb', date:new Date() },
+                    appender
+                ];
+
+            list.forEach(function(obj) {
+                formatted = appender.formatObject( obj );
+
+                console.log( formatted );
+                formatted.should.be.a('string');
+            });
+        });
+    });
+
+    describe('formatMessage', function() {
+        var appender = new AbstractAppender( createOptions() );
+
+        it('should format a list of log messages', function() {
+            var list = [ 'this is a test, time: ', new Date(), ' ', { name:'flarb', date:new Date() }, ' ', appender ];
+
+            var formatted = appender.formatMessage( list );
+
+            console.log( formatted );
+            should.exist( formatted );
+            formatted.should.be.a('string');
         });
     });
 });

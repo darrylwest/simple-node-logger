@@ -3,7 +3,7 @@
 
 ## General
 
-* add node-sprintf to give ability to format log statements in json using %j
+* modify abstract appender to output dates and objects with minimal formatting
 * add dynamic config capability; invoke conf.readLoggerConfig each 2 minutes
 * modify SimpleLogger to act as a log manager capable of managing multiple loggers
 

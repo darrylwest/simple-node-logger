@@ -43,7 +43,10 @@ describe('FileAppender', function() {
                 'getTypeName',
                 'formatEntry',
                 'formatLevel',
-                'formatTimestamp'
+                'formatTimestamp',
+                'formatMessage',
+                'formatDate',
+                'formatObject'
             ];
 
         it('should create an instance of FileAppender', function() {
