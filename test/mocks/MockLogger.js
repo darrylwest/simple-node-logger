@@ -1,7 +1,7 @@
 /**
  * @class MockLogger
  *
- * @author: darryl.west@roundpeg.com
+ * @author: darryl.west@raincitysoftware.com
  * @created: 7/8/14 5:16 PM
  */
 var dash = require('lodash' ),

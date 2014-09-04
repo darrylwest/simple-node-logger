@@ -1,7 +1,7 @@
 /**
+ * @class SimpleLoggerTests
  *
- *
- * @author: darryl.west@roundpeg.com
+ * @author: darryl.west@raincitysoftware.com
  * @created: 7/7/14 9:44 AM
  */
 var should = require('chai').should(),
