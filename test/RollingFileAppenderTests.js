@@ -6,7 +6,6 @@
  */
 var should = require('chai').should(),
     dash = require( 'lodash' ),
-    casual = require( 'casual' ),
     path = require( 'path' ),
     moment = require('moment' ),
     Logger = require('../lib/Logger' ),

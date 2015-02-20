@@ -6,7 +6,7 @@
  */
 var should = require('chai').should(),
     dash = require( 'lodash' ),
-    casual = require( 'casual' ),
+    randomData = require( 'random-fixture-data' ),
     Logger = require('../lib/Logger' ),
     MockAppender = require( './mocks/MockAppender');
 
@@ -72,11 +72,11 @@ describe('Logger', function() {
             logger.setAppenders( [ appender ] );
 
             logger.trace('this is a fallopia japonica test', { n:'one'} );
-            logger.debug( casual.words( 3 ));
-            logger.info( casual.words( 3 ));
-            logger.warn( casual.words( 3 ));
-            logger.error( casual.words( 3 ));
-            logger.fatal( casual.words( 3 ));
+            logger.debug( randomData.words( 3 ));
+            logger.info( randomData.words( 3 ));
+            logger.warn( randomData.words( 3 ));
+            logger.error( randomData.words( 3 ));
+            logger.fatal( randomData.words( 3 ));
 
             process.nextTick(function() {
                 appender.entries.length.should.equal( 6 );
@@ -88,7 +88,7 @@ describe('Logger', function() {
         it('should contain all entry attributes', function(done) {
             var logger = new Logger( opts ),
                 appender = new MockAppender(),
-                text = casual.sentence;
+                text = randomData.sentence;
 
             logger.setAppenders( [ appender ] );
 

@@ -6,7 +6,6 @@
  */
 var should = require('chai').should(),
     dash = require( 'lodash' ),
-    casual = require( 'casual' ),
     Logger = require('../lib/Logger' ),
     ConsoleAppender = require('../lib/ConsoleAppender');
 

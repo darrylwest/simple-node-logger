@@ -7,7 +7,6 @@
 var should = require('chai').should(),
     dash = require( 'lodash' ),
     fs = require( 'fs' ),
-    casual = require( 'casual' ),
     Logger = require('../lib/Logger' ),
     SimpleLogger = require( '../lib/SimpleLogger' ),
     MockAppender = require( './mocks/MockAppender');
