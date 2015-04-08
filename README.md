@@ -20,12 +20,22 @@ A simple multi-level logger for console, file, and rolling file appenders.  Feat
 ## How to use
 
 	// create a stdout console logger
-	var log = new require('simple-node-logger').createSimpleLogger();
+	var log = require('simple-node-logger').createSimpleLogger();
 
 or
 
 	// create a stdout and file logger
 	var log = require('simple-node-logger').createSimpleLogger('project.log');
+	
+or
+
+	// create a custom timestamp format for log statements
+	var SimpleNodeLogger = require('simple-node-logger'),
+		opts = {
+			logFilePath:'mylogfile.log',
+			timestampFormat:'YYYY-MM-DD HH:mm:ss.SSS'
+		},
+		log = SimpleNodeLogger.createSimpleLogger( opts );
 
 or
 
