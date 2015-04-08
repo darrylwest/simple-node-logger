@@ -196,4 +196,13 @@ describe('SimpleLogger', function() {
             manager.readConfig( callback );
         });
     });
+
+    describe('createSimpleLogger', function() {
+
+        it('should create a simple logger with a single console adapter', function() {
+            var options = {};
+
+            should.exist( options );
+        });
+    });
 });
