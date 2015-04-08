@@ -108,20 +108,26 @@ describe('AbstractAppender', function() {
         it('should have the default format', function() {
             var opts = createOptions(),
                 appender = new AbstractAppender( opts),
-                sdt = appender.formatTimestamp( ts );
+                sdt = appender.formatTimestamp( ts),
+                parts = sdt.split('.');
 
-            sdt.should.equal( '11:09:47.697');
+            // get this to pass for all timezones
+            parts[0].split(':')[1].should.equal( '09' );
+            parts[0].split(':')[2].should.equal( '47' );
+            parts[1].should.equal( '697' );
+
+            // sdt.should.equal( '18:09:47.697');
         });
 
         it('should have a custom format from options', function() {
             var opts = {
                     typeName:'customerTSAppender',
-                    timestampFormat:'SSS.YYYY-MM-DD HH:mm:ss'
+                    timestampFormat:'x' // unix timestamp
                 },
                 appender = new AbstractAppender( opts),
                 sdt = appender.formatTimestamp( ts );
-
-            sdt.should.equal( '697.2015-04-08 11:09:47');
+            
+            sdt.should.equal( ts.toString() );
         });
     });
 });

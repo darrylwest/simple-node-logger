@@ -200,9 +200,12 @@ describe('SimpleLogger', function() {
     describe('createSimpleLogger', function() {
 
         it('should create a simple logger with a single console adapter', function() {
-            var options = {};
+            var opts = {
+                    timestampFormat:'YYYY-MM-DD'
+                },
+                log = SimpleLogger.createSimpleLogger( opts );
 
-            should.exist( options );
+            should.exist( log );
         });
     });
 });
