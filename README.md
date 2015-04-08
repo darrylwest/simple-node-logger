@@ -64,7 +64,9 @@ or
     // create other logs and appenders...
     
 
-The first use simply logs to the console.  The second logs to the console and to the project.log file.  The third logs to the file only. The forth creates a rolling file log system in the target log folder.  The fifth creates a log manager to enable you to add various appenders with multiple levels and create logs for each module or class.
+The first use simply logs to the console.  The second logs to the console and to the project.log file.  The third create a console logger with a custom timestamp format. The fourth logs to the file only. The fifth creates a rolling file log system in the target log folder.  The fifth creates a log manager to enable you to add various appenders with multiple levels and create logs for each module or class.
+
+*See the examples folder for in depth samples...*
 
 ## Log Levels
 
