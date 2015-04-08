@@ -120,7 +120,7 @@ describe('AbstractAppender', function() {
                 },
                 appender = new AbstractAppender( opts),
                 sdt = appender.formatTimestamp( ts );
-            
+
             sdt.should.equal( '697.2015-04-08 11:09:47');
         });
     });

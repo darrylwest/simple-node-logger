@@ -83,7 +83,6 @@ describe('RollingFileAppender', function() {
                 appender,
                 p;
 
-
             opts.currentFile = path.join( process.env.HOME, fn );
             appender = new RollingFileAppender( opts );
             p = appender.__protected();
@@ -91,11 +90,11 @@ describe('RollingFileAppender', function() {
             appender.checkForRoll( now ).should.equal( false );
 
             // now add a second
-            now = now.add('s', 1 );
+            now = now.add( 1, 's' );
             appender.checkForRoll( now ).should.equal( false );
 
             // now add a few hours
-            now = now.add('h', 4 );
+            now = now.add( 4, 'h' );
             appender.checkForRoll( now ).should.equal( false );
         });
 
@@ -105,13 +104,12 @@ describe('RollingFileAppender', function() {
                 appender,
                 p;
 
-
             opts.currentFile = path.join( process.env.HOME, fn );
             appender = new RollingFileAppender( opts );
             p = appender.__protected();
 
             // now add a few hours
-            now = now.add('day', 1 );
+            now = now.add( 1, 'day' );
             appender.checkForRoll( now ).should.equal( true );
         });
 
