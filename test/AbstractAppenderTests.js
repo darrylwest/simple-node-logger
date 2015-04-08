@@ -126,7 +126,7 @@ describe('AbstractAppender', function() {
                 },
                 appender = new AbstractAppender( opts),
                 sdt = appender.formatTimestamp( ts );
-            
+
             sdt.should.equal( ts.toString() );
         });
     });

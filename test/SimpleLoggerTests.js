@@ -201,7 +201,7 @@ describe('SimpleLogger', function() {
 
         it('should create a simple logger with a single console adapter', function() {
             var opts = {
-                    timestampFormat:'YYYY-MM-DD'
+                    timestampFormat:'x'
                 },
                 log = SimpleLogger.createSimpleLogger( opts );
 
