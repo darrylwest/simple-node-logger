@@ -14,3 +14,15 @@ log.setLevel('all');
 log.trace('this is a simple trace log statement (should show)');
 log.debug('this is a simple debug log statement (should show)');
 
+// example of an override
+log.warn = function() {
+    var args = Array.prototype.slice.call( arguments ),
+        entry = log.log('warn', args);
+
+    process.nextTick(function() {
+        console.log( 'custom:', JSON.stringify( entry ) );
+    });
+};
+
+log.warn('this is an override test...');
+

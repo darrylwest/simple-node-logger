@@ -154,12 +154,34 @@ For example, you can extend the AbstractAppender to create a JSON appender by do
 
 ### Overrides
 
+#### Appenders
+
 The appenders have formatting messages that can be overridden at the abstract or concrete level.  The format methods include:
 
 - formatEntry(entry) - to override all formatting
 - formatMessage(msgList) - to override a list of messages
 - formatDate(value) - custom date, defaults to ISO8601
 - formatObject(value) - custom object, defaults to json for regular objects
+
+#### Logger
+
+It's easy to extend any one of the log methods at the instance level.  Here is an example of overrideing the error log to send a socket message:
+
+```
+var log = new require('simple-node-logger').createSimpleLogger(),
+    socket = openWebSocket();
+
+// override the standard error method to send a socket message
+log.error = function() {
+    var args = Array.prototype.slice.call( arguments ),
+        entry = log.log('error', args);
+
+    // now do something special with the log entry...
+    process.nextTick(function() {
+    	socket.send( JSON.stringify( entry ));
+    });
+};
+```
 
 ## Tests
 
@@ -181,7 +203,7 @@ Mocks used for testing include MockLogger and MockAppender.  Typically you would
     var log = MockLogger.createLogger('MyCategory');
 
     log.info('this is a log statement');
-    log.getLogEnties().length.should.equal( 1 );
+    log.getLogEntries().length.should.equal( 1 );
     
 MockLogger extends Logger and uses MockAppender to capture log entries.
 
@@ -190,4 +212,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014-2015, rain city software | Version 0.92.19</em></small></p>
+<p><small><em>Copyright © 2014-2015, rain city software | Version 0.92.20</em></small></p>
