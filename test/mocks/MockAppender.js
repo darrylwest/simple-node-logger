@@ -6,7 +6,7 @@
  */
 var MockAppender = function() {
     'use strict';
-    var Logger = require('../lib/Logger' );
+    var Logger = require('../../lib/Logger' );
     var level  = Logger.DEFAULT_LEVEL,
         levels = Logger.STANDARD_LEVELS,
         currentLevel = levels.indexOf( level );
