@@ -45,7 +45,7 @@ describe('Logger', function() {
 
         it('should have all expected methods by size and type', function() {
             var allMethods = methods.concat( Logger.STANDARD_LEVELS );
-            dash.methods( logger ).length.should.equal( allMethods.length );
+            dash.functionsIn( logger ).length.should.equal( allMethods.length );
             allMethods.forEach(function(method) {
                 logger[ method ].should.be.a( 'function' );
             });

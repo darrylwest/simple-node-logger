@@ -52,7 +52,7 @@ describe('ConsoleAppender', function() {
         });
 
         it('should have all expected methods by size and type', function() {
-            dash.methods( appender ).length.should.equal( methods.length );
+            dash.functionsIn( appender ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 appender[ method ].should.be.a( 'function' );
             });

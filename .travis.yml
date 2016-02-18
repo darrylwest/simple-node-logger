@@ -1,8 +1,12 @@
 language: node_js
 
 node_js:
-  - "0.12"
-  - "0.10"
+  - "4"
+  - "12"
+sudo: false
 
 before_script:
   - npm install -g grunt-cli
+
+script: grunt test
+

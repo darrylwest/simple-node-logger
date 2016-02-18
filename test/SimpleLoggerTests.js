@@ -50,7 +50,7 @@ describe('SimpleLogger', function() {
         });
 
         it('should have all expected methods by size and type', function() {
-            dash.methods( manager ).length.should.equal( methods.length );
+            dash.functionsIn( manager ).length.should.equal( methods.length );
             methods.forEach(function(method) {
                 manager[ method ].should.be.a( 'function' );
             });
