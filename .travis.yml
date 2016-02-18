@@ -2,7 +2,6 @@ language: node_js
 
 node_js:
   - "4"
-  - "12"
 sudo: false
 
 before_script:
