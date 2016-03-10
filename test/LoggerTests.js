@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/5/14 6:28 PM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require( 'lodash' ),
     randomData = require( 'random-fixture-data' ),
     Logger = require('../lib/Logger' ),
@@ -13,7 +13,7 @@ var should = require('chai').should(),
 describe('Logger', function() {
     'use strict';
 
-    var createOptions = function() {
+    const createOptions = function() {
         var opts = {};
 
         opts.category = 'MyCat';

@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/7/14 6:27 PM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require( 'lodash' ),
     Logger = require('../lib/Logger' ),
     AbstractAppender = require('../lib/AbstractAppender');

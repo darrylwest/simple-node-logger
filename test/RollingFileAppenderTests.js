@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/27/14 9:53 AM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require( 'lodash' ),
     path = require( 'path' ),
     moment = require('moment' ),
@@ -14,7 +14,7 @@ var should = require('chai').should(),
 describe('RollingFileAppender', function() {
     'use strict';
 
-    var createLogger = function() {
+    const createLogger = function() {
         var opts = {};
 
         opts.domain = 'MyDomain';
@@ -24,7 +24,7 @@ describe('RollingFileAppender', function() {
         return new Logger( opts );
     };
 
-    var createOptions = function() {
+    const createOptions = function() {
         var opts = {};
 
         opts.level = 'debug';
@@ -36,7 +36,7 @@ describe('RollingFileAppender', function() {
     };
 
     describe('#instance', function() {
-        var appender = new RollingFileAppender( createOptions() ),
+        const appender = new RollingFileAppender( createOptions() ),
             methods = [
                 'formatter',
                 'write',

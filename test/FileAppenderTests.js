@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/7/14 5:15 PM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require( 'lodash' ),
     Logger = require('../lib/Logger' ),
     FileAppender = require('../lib/FileAppender');
@@ -12,7 +12,7 @@ var should = require('chai').should(),
 describe('FileAppender', function() {
     'use strict';
 
-    var createLogger = function() {
+    const createLogger = function() {
         var opts = {};
 
         opts.domain = 'MyDomain';
@@ -22,7 +22,7 @@ describe('FileAppender', function() {
         return new Logger( opts );
     };
 
-    var createOptions = function() {
+    const createOptions = function() {
         var opts = {};
 
         opts.level = 'debug';

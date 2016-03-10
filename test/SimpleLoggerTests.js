@@ -4,7 +4,7 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/7/14 9:44 AM
  */
-var should = require('chai').should(),
+const should = require('chai').should(),
     dash = require( 'lodash' ),
     fs = require( 'fs' ),
     Logger = require('../lib/Logger' ),
@@ -14,7 +14,7 @@ var should = require('chai').should(),
 describe('SimpleLogger', function() {
     'use strict';
 
-    var createOptions = function() {
+    const createOptions = function() {
         var opts = {};
 
         return opts;
