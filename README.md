@@ -6,7 +6,7 @@
 A simple multi-level logger for console, file, and rolling file appenders.  Features include:
 
 - levels: trace, debug, info, warn, error and fatal levels (plus all and off)
-- flexible appender/formatters with default to HH:MM:ss.SSS LEVEL message
+- flexible appender/formatters with default to HH:mm:ss.SSS LEVEL message
 - add appenders to send output to console, file, rolling file, etc
 - change log levels on the fly
 - domain and category columns
@@ -177,7 +177,7 @@ The appenders have formatting messages that can be overridden at the abstract or
 
 #### Logger
 
-It's easy to extend any one of the log methods at the instance level.  Here is an example of overrideing the error log to send a socket message:
+It's easy to extend any one of the log methods at the instance level.  Here is an example of overriding the error log to send a socket message:
 
 ```
 var log = new require('simple-node-logger').createSimpleLogger(),
@@ -224,4 +224,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014-2016, rain city software | Version 0.93.11</em></small></p>
+<p><small><em>Copyright © 2014-2016, rain city software | Version 0.93.12</em></small></p>
