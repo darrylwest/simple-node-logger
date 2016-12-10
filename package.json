@@ -1,6 +1,6 @@
 {
   "name": "simple-node-logger",
-  "version": "0.93.12",
+  "version": "0.93.13",
   "description": "A simple node console and file logger suitable for small, medium and large projects.",
   "main": "index.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "git://github.com/darrylwest/simple-node-logger.git"
   },
   "scripts": {
-    "test": "grunt testAll"
+    "test": "make test"
   },
   "keywords": [
     "log",
@@ -19,29 +19,15 @@
     "console logger"
   ],
   "dependencies": {
-    "lodash": "^4.5.0",
-    "moment": "^2.11.2",
-    "path": "^0.12.7",
-    "util": "^0.10.3"
+    "lodash": "^4.17.2",
+    "moment": "^2.17.1"
   },
   "devDependencies": {
-    "chai": "~1.8.1",
-    "express-mocks-http": "0.0.11",
-    "grunt": "~0.4.2",
-    "grunt-concurrent": "~0.3.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-jshint": "~0.8.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-jsdoc": "^0.5.4",
-    "grunt-mocha-test": "~0.8.1",
-    "grunt-nsp-package": "0.0.5",
-    "jshint-stylish": "~0.1.3",
-    "load-grunt-tasks": "~0.1.0",
-    "mocha": "~1.16.2",
-    "random-fixture-data": "^2.0.15",
-    "time-grunt": "~0.1.1"
+    "chai": "^3.5.0",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^3.2.0",
+    "random-fixture-data": "^2.0.17"
   },
   "author": "darryl.west@raincitysoftware.com",
   "license": "Apache 2.0",

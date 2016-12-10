@@ -20,17 +20,17 @@ A simple multi-level logger for console, file, and rolling file appenders.  Feat
 ## How to use
 
 	// create a stdout console logger
-	var log = require('simple-node-logger').createSimpleLogger();
+	const log = require('simple-node-logger').createSimpleLogger();
 
 or
 
 	// create a stdout and file logger
-	var log = require('simple-node-logger').createSimpleLogger('project.log');
+	const log = require('simple-node-logger').createSimpleLogger('project.log');
 	
 or
 
 	// create a custom timestamp format for log statements
-	var SimpleNodeLogger = require('simple-node-logger'),
+	const SimpleNodeLogger = require('simple-node-logger'),
 		opts = {
 			logFilePath:'mylogfile.log',
 			timestampFormat:'YYYY-MM-DD HH:mm:ss.SSS'
@@ -40,27 +40,27 @@ or
 or
 
 	// create a file only file logger
-	var log = require('simple-node-logger').createSimpleFileLogger('project.log');
+	const log = require('simple-node-logger').createSimpleFileLogger('project.log');
 	
 or
 
     // create a rolling file logger based on date/time
-    var opts = {
+    const opts = {
         logDirectory:'/mylogfiles',
         fileNamePattern:'roll-<DATE>.log',
         dateFormat:'YYYY.MM.DD'
     };
 
-    var log = require('simple-node-logger').createRollingFileLogger( opts );
+    const log = require('simple-node-logger').createRollingFileLogger( opts );
     
 or
 
 	// create a log manager
-    var manager = require('simple-node-logger').createLogManager();
+    const manager = require('simple-node-logger').createLogManager();
     
     manager.createConsoleAppender();
     
-    var log = manager.createLogger('MyClass');
+    const log = manager.createLogger('MyClass');
     // create other logs and appenders...
     
 
@@ -144,9 +144,9 @@ Adding a new appender is as easy as implementing write( logEntry ).  The easiest
 
 For example, you can extend the AbstractAppender to create a JSON appender by doing this:
 
-    var AbstractAppender = require('simple-node-logger').AbstractAppender;
+    const AbstractAppender = require('simple-node-logger').AbstractAppender;
 
-    var JSONAppender = function() {
+    const JSONAppender = function() {
     	'use strict';
     	var appender = this;
     	
@@ -180,7 +180,7 @@ The appenders have formatting messages that can be overridden at the abstract or
 It's easy to extend any one of the log methods at the instance level.  Here is an example of overriding the error log to send a socket message:
 
 ```
-var log = new require('simple-node-logger').createSimpleLogger(),
+const log = new require('simple-node-logger').createSimpleLogger(),
     socket = openWebSocket();
 
 // override the standard error method to send a socket message
@@ -210,9 +210,9 @@ There is also a file watcher that can be invoked with this:
 
 Mocks used for testing include MockLogger and MockAppender.  Typically you would use MockLogger for unit tests like this:
 
-    var MockLogger = require('simple-node-logger').mocks.MockLogger;
+    const MockLogger = require('simple-node-logger').mocks.MockLogger;
 
-    var log = MockLogger.createLogger('MyCategory');
+    const log = MockLogger.createLogger('MyCategory');
 
     log.info('this is a log statement');
     log.getLogEntries().length.should.equal( 1 );
@@ -224,4 +224,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014-2016, rain city software | Version 0.93.12</em></small></p>
+<p><small><em>Copyright © 2014-2016, rain city software | Version 0.93.13</em></small></p>

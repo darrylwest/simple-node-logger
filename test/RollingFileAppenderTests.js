@@ -117,7 +117,7 @@ describe('RollingFileAppender', function() {
 
     describe('createFileName', function() {
         var opts = createOptions(),
-            now = new moment( '2014-02-06T18:00Z' ).utc(),
+            now = moment( '2014-02-06T18:00Z' ).utc(),
             patterns = [
                 'YY.MM.DD',
                 'YYYY.MM.DD.HH',

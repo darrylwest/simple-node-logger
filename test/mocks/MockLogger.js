@@ -4,14 +4,14 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/8/14 5:16 PM
  */
-var dash = require('lodash' ),
+const dash = require('lodash' ),
     Logger = require('../../lib/Logger' ),
     MockAppender = require('./MockAppender');
 
-var MockLogger = function(opts) {
+const MockLogger = function(opts) {
     'use strict';
 
-    var mock = this,
+    const mock = this,
         appender = new MockAppender();
 
     if (!opts) opts = {};
@@ -29,7 +29,7 @@ var MockLogger = function(opts) {
 MockLogger.createLogger = function(category, level) {
     'use strict';
 
-    var opts = {};
+    const opts = {};
 
     if (category) opts.category = category;
     if (level) opts.level = level;

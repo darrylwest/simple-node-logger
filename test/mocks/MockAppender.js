@@ -4,13 +4,13 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/6/14 8:41 AM
  */
-var MockAppender = function() {
+const MockAppender = function() {
     'use strict';
-    var Logger = require('../../lib/Logger' );
-    var level  = Logger.DEFAULT_LEVEL,
+    const Logger = require('../../lib/Logger' );
+    let level  = Logger.DEFAULT_LEVEL,
         levels = Logger.STANDARD_LEVELS,
         currentLevel = levels.indexOf( level );
-    var appender = this;
+    let appender = this;
 
     this.entries = [];
 
