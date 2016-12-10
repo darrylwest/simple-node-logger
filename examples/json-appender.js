@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 
-var SimpleLogger = require('../index.js');
+const SimpleLogger = require('../index.js');
+    Logger = require('../lib/Logger'),
     AbstractAppender = SimpleLogger.AbstractAppender,
     manager = new SimpleLogger();
 
-var JSONAppender = function() {
-    var appender = this,
+const JSONAppender = function(options = {}) {
+    const appender = this,
         opts = {
             typeName:'JSONAppender'
         };
+
+    let level = options.level || Logger.STANDARD_LEVELS[1];
+    let levels = options.levels || Logger.STANDARD_LEVELS;
 
     AbstractAppender.extend( this, opts );
 
@@ -16,10 +20,17 @@ var JSONAppender = function() {
         var fields = appender.formatEntry( entry );
         process.stdout.write( JSON.stringify( fields ) + '\n');
     };
+
+    this.setLevel = function(level) {
+        const idx = levels.indexOf(level);
+        if (idx >= 0) {
+            level = idx;
+        }
+    };
 };
 
 manager.addAppender( new JSONAppender() );
-var log = manager.createLogger('JsonTest');
+const log = manager.createLogger('JsonTest');
 
 log.trace('this is a simple trace log statement (should not show)');
 log.debug('this is a simple debug log statement (should not show)');

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var filename = './logs/json-test.log';
+const filename = './logs/json-test.log';
 console.log('opening log file: ', filename);
 
 var SimpleLogger = require('../lib/SimpleLogger');
