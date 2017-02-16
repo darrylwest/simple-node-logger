@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var log = require('../lib/SimpleLogger').createSimpleLogger();
+const log = require('../lib/SimpleLogger').createSimpleLogger({level:'info'});
 
 log.trace('this is a simple trace log statement (should not show)');
 log.debug('this is a simple debug log statement (should not show)');
