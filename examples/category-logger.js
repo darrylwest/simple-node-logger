@@ -24,3 +24,7 @@ log2.fatal('this is a simple fatal log statement/entry');
 log2.trace('this is a simple trace log statement (should show)');
 log1.debug('this is a simple debug log statement (should show)');
 
+var loggers = manager.getLoggers();
+loggers.forEach(logger => {
+    console.log('stats: ', logger.getCategory, logger.getStats());
+});

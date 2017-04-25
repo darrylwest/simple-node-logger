@@ -14,7 +14,7 @@ describe('Logger', function() {
     'use strict';
 
     const createOptions = function() {
-        var opts = {};
+        const opts = {};
 
         opts.category = 'MyCat';
         opts.appenders = [ new MockAppender() ];
@@ -23,7 +23,7 @@ describe('Logger', function() {
     };
 
     describe('#instance', function() {
-        var logger = new Logger( createOptions() ),
+        const logger = new Logger( createOptions() ),
             methods = [
                 'log',
                 'createEntry',
@@ -59,6 +59,10 @@ describe('Logger', function() {
             should.exist( appenders );
             appenders.length.should.equal( 1 );
         });
+
+        it('should have a category', function() {
+            logger.getCategory().should.equal('MyCat');
+        });
     });
 
     describe('log', function() {
@@ -86,6 +90,8 @@ describe('Logger', function() {
 
                 done();
             });
+
+            logger.getDomain().should.equal(opts.domain);
         });
 
         it('should contain all entry attributes', function(done) {
@@ -158,6 +164,9 @@ describe('Logger', function() {
             log.isInfo().should.equal( false );
         });
 
+    });
+
+    describe('stats', function() {
         it('should report stats with counts for each level', function() {
             const log = new Logger( createOptions() );
             let stats = log.getStats();
