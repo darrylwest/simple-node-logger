@@ -1,5 +1,12 @@
 # Simple Node Logger
-- - -
+```
+ __ _                 _            __          _          __                             
+/ _(_)_ __ ___  _ __ | | ___    /\ \ \___   __| | ___    / /  ___   __ _  __ _  ___ _ __ 
+\ \| | '_ ` _ \| '_ \| |/ _ \  /  \/ / _ \ / _` |/ _ \  / /  / _ \ / _` |/ _` |/ _ \ '__|
+_\ \ | | | | | | |_) | |  __/ / /\  / (_) | (_| |  __/ / /__| (_) | (_| | (_| |  __/ |   
+\__/_|_| |_| |_| .__/|_|\___| \_\ \/ \___/ \__,_|\___| \____/\___/ \__, |\__, |\___|_|   
+               |_|                                                 |___/ |___/           
+```
 
 [![NPM version](https://badge.fury.io/js/simple-node-logger.svg)](http://badge.fury.io/js/simple-node-logger) [![Build Status](https://travis-ci.org/darrylwest/simple-node-logger.svg?branch=master)](https://travis-ci.org/darrylwest/simple-node-logger) [![Dependency Status](https://david-dm.org/darrylwest/simple-node-logger.svg)](https://david-dm.org/darrylwest/simple-node-logger)
 
@@ -11,6 +18,7 @@ A simple multi-level logger for console, file, and rolling file appenders.  Feat
 - change log levels on the fly
 - domain and category columns
 - overridable format methods in base appender
+- stats that track counts of all log statements including warn, error, etc
 
 ## Installation
 
@@ -195,6 +203,7 @@ log.error = function() {
 };
 ```
 
+
 ## Tests
 
 All unit tests are written in mocha/chai/should and can be run from the command line by doing this:
@@ -224,4 +233,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.18</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.19</em></small></p>
