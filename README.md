@@ -53,8 +53,9 @@ or
 	
 or
 
-    // create a rolling file logger based on date/time
+    // create a rolling file logger based on date/time that fires process events
     const opts = {
+        errorEventName:'error',
         logDirectory:'/mylogfiles',
         fileNamePattern:'roll-<DATE>.log',
         dateFormat:'YYYY.MM.DD'
@@ -234,4 +235,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.19</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.20</em></small></p>
