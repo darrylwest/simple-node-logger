@@ -35,6 +35,8 @@ describe('Logger', function() {
                 'getAppenders',
                 'isDebug',
                 'isInfo',
+                'getCategory',
+                'getDomain',
                 'getStats',
                 '__protected'
             ];
