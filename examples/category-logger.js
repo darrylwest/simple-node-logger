@@ -4,9 +4,13 @@ var filename = '/tmp/file-test.log';
 console.log('a category logger with console and file appenders...\nlog file: ', filename);
 
 var SimpleLogger = require('../lib/SimpleLogger'),
-    manager = new SimpleLogger(),
+    manager = new SimpleLogger({ errorEventName:'error' }),
     log1,
     log2;
+
+process.on('error', (msg) => {
+    console.log('Error event caught: ', JSON.stringify(msg));
+});
 
 manager.addAppender( manager.createConsoleAppender() );
 manager.addAppender( manager.createFileAppender( { logFilePath:filename } ));

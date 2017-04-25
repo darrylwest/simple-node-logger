@@ -19,6 +19,7 @@ A simple multi-level logger for console, file, and rolling file appenders.  Feat
 - domain and category columns
 - overridable format methods in base appender
 - stats that track counts of all log statements including warn, error, etc
+- ability to configure to emit process error event for central trapping
 
 ## Installation
 
@@ -188,8 +189,8 @@ The appenders have formatting messages that can be overridden at the abstract or
 It's easy to extend any one of the log methods at the instance level.  Here is an example of overriding the error log to send a socket message:
 
 ```
-const log = new require('simple-node-logger').createSimpleLogger(),
-    socket = openWebSocket();
+const log = new require('simple-node-logger').createSimpleLogger();
+const socket = openWebSocket();
 
 // override the standard error method to send a socket message
 log.error = function() {

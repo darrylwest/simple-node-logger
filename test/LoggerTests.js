@@ -166,6 +166,40 @@ describe('Logger', function() {
 
     });
 
+    describe('errorEventHandler', function() {
+        it('should emit a process error event when configured for events', function(done) {
+            const opts = createOptions();
+            opts.errorEventName = 'myerrortrap';
+            const log = new Logger( opts );
+            process.on(opts.errorEventName, (msg) => {
+                should.exist(msg);
+                msg.category.should.equal('MyCat');
+                msg.level.should.equal('error');
+                msg.msg.pop().should.equal('my error trap thing');
+                done();
+            });
+
+            log.info('this is a test');
+            log.warn('anhter');
+            log.error('my error trap thing');
+        });
+
+        it('should not emit a process error event when not configured for events', function(done) {
+            const log = new Logger( createOptions() );
+            process.on('error', (msg) => {
+                should.not.exist(msg);
+            });
+
+            log.info('this is a test');
+            log.warn('anhter');
+            log.error('my error trap thing');
+
+            setTimeout(() => {
+                done();
+            },50);
+        });
+    });
+
     describe('stats', function() {
         it('should report stats with counts for each level', function() {
             const log = new Logger( createOptions() );
