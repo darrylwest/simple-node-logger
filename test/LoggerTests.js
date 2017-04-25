@@ -35,6 +35,7 @@ describe('Logger', function() {
                 'getAppenders',
                 'isDebug',
                 'isInfo',
+                'getStats',
                 '__protected'
             ];
 
@@ -115,7 +116,7 @@ describe('Logger', function() {
 
     describe('#isLevel', function() {
         it('should report isDebug as true if at or below debug', function() {
-            var log = new Logger( createOptions() );
+            const log = new Logger( createOptions() );
 
             log.setLevel('debug');
             log.getLevel().should.equal( 'debug' );
@@ -127,7 +128,7 @@ describe('Logger', function() {
 
         });
         it('should report isDebug as false if above debug', function() {
-            var log = new Logger( createOptions() );
+            const log = new Logger( createOptions() );
 
             log.setLevel('info');
             log.getLevel().should.equal( 'info' );
@@ -136,7 +137,7 @@ describe('Logger', function() {
         });
 
         it('should report isInfo as true if at or below info', function() {
-            var log = new Logger( createOptions() );
+            const log = new Logger( createOptions() );
 
             log.setLevel('info');
             log.getLevel().should.equal( 'info' );
@@ -148,11 +149,30 @@ describe('Logger', function() {
         });
 
         it('should report isInfo as false if above info', function() {
-            var log = new Logger( createOptions() );
+            const log = new Logger( createOptions() );
 
             log.setLevel('warn');
             log.getLevel().should.equal( 'warn' );
             log.isInfo().should.equal( false );
+        });
+
+        it('should report stats with counts for each level', function() {
+            const log = new Logger( createOptions() );
+            let stats = log.getStats();
+
+            should.exist( stats );
+            Logger.STANDARD_LEVELS.forEach(lvl => {
+                stats.get(lvl).should.equal(0);
+            });
+
+            log.debug('this is one');
+            log.getStats().get('debug').should.equal(1);
+            log.info('this is one');
+            log.getStats().get('info').should.equal(1);
+            log.warn('this is one');
+            log.getStats().get('warn').should.equal(1);
+            log.error('this is one');
+            log.getStats().get('error').should.equal(1);
         });
     });
 });
