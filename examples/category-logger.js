@@ -26,5 +26,5 @@ log1.debug('this is a simple debug log statement (should show)');
 
 var loggers = manager.getLoggers();
 loggers.forEach(logger => {
-    console.log('stats: ', logger.getCategory, logger.getStats());
+    console.log('stats: ', logger.getCategory(), logger.getStats());
 });
