@@ -196,7 +196,7 @@ describe('Logger', function() {
 
             setTimeout(() => {
                 done();
-            },50);
+            },30);
         });
     });
 
