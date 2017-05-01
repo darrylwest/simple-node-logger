@@ -12,6 +12,7 @@ module.exports = {
     "rules": {
         "eqeqeq": "error",
         "curly": "error",
+        "complexity": [ "error", 10 ],
         "brace-style": [ "error", "1tbs" ],
         "indent": [ "error", 4 ],
         "linebreak-style": [ "error", "unix" ],
