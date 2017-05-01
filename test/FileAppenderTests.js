@@ -74,8 +74,6 @@ describe('FileAppender', function() {
             opts.writer.write = function(str) {
                 should.exist( str );
 
-                console.log( str );
-
                 str.should.contain('INFO');
                 str.should.contain(':');
 

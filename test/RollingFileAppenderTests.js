@@ -8,21 +8,10 @@ const should = require('chai').should(),
     dash = require( 'lodash' ),
     path = require( 'path' ),
     moment = require('moment' ),
-    Logger = require('../lib/Logger' ),
     RollingFileAppender = require('../lib/RollingFileAppender');
 
 describe('RollingFileAppender', function() {
     'use strict';
-
-    const createLogger = function() {
-        var opts = {};
-
-        opts.domain = 'MyDomain';
-        opts.category = 'MyCategory';
-        opts.level = 'debug';
-
-        return new Logger( opts );
-    };
 
     const createOptions = function() {
         var opts = {};
@@ -80,12 +69,13 @@ describe('RollingFileAppender', function() {
         it('should return false when the date stays within the same day', function() {
             var now = moment( '2014-01-01T00:00:00' ),
                 fn = opts.fileNamePattern.replace( /<DATE>/i, now.format( opts.dateFormat ) ),
-                appender,
-                p;
+                appender;
 
             opts.currentFile = path.join( process.env.HOME, fn );
             appender = new RollingFileAppender( opts );
-            p = appender.__protected();
+            const p = appender.__protected();
+
+            should.exist( p );
 
             appender.checkForRoll( now ).should.equal( false );
 
@@ -101,12 +91,13 @@ describe('RollingFileAppender', function() {
         it('should return true when the day changes', function() {
             var now = moment(),
                 fn = opts.fileNamePattern.replace( /<DATE>/i, now.format( opts.dateFormat ) ),
-                appender,
-                p;
+                appender;
 
             opts.currentFile = path.join( process.env.HOME, fn );
             appender = new RollingFileAppender( opts );
-            p = appender.__protected();
+            const p = appender.__protected();
+
+            should.exist( p );
 
             // now add a few hours
             now = now.add( 1, 'day' );
@@ -143,8 +134,6 @@ describe('RollingFileAppender', function() {
                 appender = new RollingFileAppender( opts );
 
                 fn = appender.createFileName( now );
-
-                // console.log( fn );
 
                 fn.should.equal( expected[ idx ] );
             }

@@ -1,6 +1,6 @@
 {
   "name": "simple-node-logger",
-  "version": "0.93.20",
+  "version": "0.93.21",
   "description": "A simple node console and file logger suitable for small, medium and large projects.",
   "main": "index.js",
   "repository": {
@@ -24,9 +24,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "jshint": "^2.9.4",
-    "jshint-stylish": "^2.2.1",
     "mocha": "^3.2.0",
+    "eslint": "^3.19.0",
     "random-fixture-data": "^2.0.17"
   },
   "author": "darryl.west@raincitysoftware.com",

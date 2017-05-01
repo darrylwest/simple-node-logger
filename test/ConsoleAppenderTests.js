@@ -70,7 +70,7 @@ describe('ConsoleAppender', function() {
             opts.writer = function(str) {
                 should.exist( str );
 
-                console.log( str );
+                // console.log( str );
 
                 str.should.contain('INFO');
                 str.should.contain(':');

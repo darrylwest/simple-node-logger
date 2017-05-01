@@ -58,7 +58,7 @@ describe('SimpleLogger', function() {
     });
 
     describe('createLogger', function() {
-        var manager = new SimpleLogger( createOptions() );
+        const manager = new SimpleLogger( createOptions() );
 
         it('should create a basic logger with console appender', function() {
             var log = manager.createLogger('MyCategory', 'warn');
@@ -72,13 +72,12 @@ describe('SimpleLogger', function() {
     });
 
     describe('#domain', function() {
-        var opts = createOptions(),
-            manager;
+        const opts = createOptions();
 
         opts.domain = 'MyDomain';
         opts.level = 'error';
 
-        manager = new SimpleLogger( opts );
+        const manager = new SimpleLogger( opts );
 
         it('should create a simple logger with a domain', function() {
             var p = manager.__protected();
@@ -98,7 +97,7 @@ describe('SimpleLogger', function() {
     });
 
     describe('addAppender', function() {
-        var manager = new SimpleLogger( createOptions() );
+        const manager = new SimpleLogger( createOptions() );
 
         it('should add a new appender to the list', function() {
             manager.getAppenders().length.should.equal( 0 );
@@ -112,36 +111,38 @@ describe('SimpleLogger', function() {
     });
 
     describe('createConsoleAppender', function() {
-        var manager = new SimpleLogger( createOptions() );
+        const manager = new SimpleLogger( createOptions() );
 
         it('should create a new console appender and add it to the appenders list', function() {
             var appender = manager.createConsoleAppender();
+            should.exist( appender );
             manager.getAppenders().length.should.equal( 1 );
         });
     });
 
     describe('createFileAppender', function() {
-        var manager = new SimpleLogger( createOptions() );
+        const manager = new SimpleLogger( createOptions() );
 
         it('should create a new file appender and add it to the appenders list', function() {
-            var appender = manager.createFileAppender( { logFilePath:'/dev/null' });
+            const appender = manager.createFileAppender( { logFilePath:'/dev/null' });
+            should.exist( appender );
             manager.getAppenders().length.should.equal( 1 );
         });
     });
 
     describe('createRollingFileAppender', function() {
-        var manager = new SimpleLogger( createOptions() );
+        const manager = new SimpleLogger( createOptions() );
 
         it('should create a new rolling file appender and add it to the appenders list', function() {
-            var opts = {},
-                appender;
+            const opts = {};
 
             opts.level = 'debug';
             opts.logDirectory = process.env.HOME + '/logs';
             opts.fileNamePattern = 'app-<Date>.log';
             opts.autoOpen = false;
 
-            appender = manager.createRollingFileAppender( opts );
+            const appender = manager.createRollingFileAppender( opts );
+            should.exist( appender );
             manager.getAppenders().length.should.equal( 1 );
         });
     });
@@ -158,13 +159,14 @@ describe('SimpleLogger', function() {
         it('should start refresh thread if config file and refresh are set', function(done) {
             manager.startRefreshThread = function() {
                 if (fs.existsSync( opts.loggerConfigFile ) && dash.isNumber( opts.refresh )) {
-                    console.log('file: ', opts.loggerConfigFile );
-                    var obj = JSON.parse( fs.readFileSync( opts.loggerConfigFile ));
-                    // console.log( obj );
+                    // console.log('file: ', opts.loggerConfigFile );
+                    const obj = JSON.parse( fs.readFileSync( opts.loggerConfigFile ));
+                    should.exist( obj );
 
                     done();
                 } else {
-                    console.log('refresh: ', opts.refresh);
+                    /*eslint no-console: "off"*/
+                    console.log(opts.refresh);
                     console.log('file: ', opts.loggerConfigFile, ' does not exist?');
                 }
             };

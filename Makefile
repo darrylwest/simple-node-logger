@@ -1,6 +1,6 @@
 JSFILES=index.js lib/*.js test/*.js test/mocks/*.js
 TESTFILES=test/*.js
-JSHINT=node_modules/.bin/jshint
+ESLINT=node_modules/.bin/eslint
 MOCHA=node_modules/.bin/mocha
 
 all:
@@ -10,13 +10,12 @@ all:
 npm:
 	@npm install
 
+lint:
+	@( $(ESLINT) $(JSFILES) && echo "lint tests passed..." )
+
 test:
 	@( [ -d node_modules ] || make npm )
-	@( $(MOCHA) $(TESTFILES) )
-	@( $(JSHINT) --reporter node_modules/jshint-stylish/ $(JSFILES) )
-
-jshint:
-	@( $(JSHINT) --verbose --reporter node_modules/jshint-stylish/ $(JSFILES) )
+	@( $(MOCHA) $(TESTFILES) && make lint )
 
 watch:
 	@( ./watcher.js )

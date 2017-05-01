@@ -7,18 +7,24 @@
 const MockAppender = function() {
     'use strict';
     const Logger = require('../../lib/Logger' );
-    let level  = Logger.DEFAULT_LEVEL,
-        levels = Logger.STANDARD_LEVELS,
-        currentLevel = levels.indexOf( level );
+
+    let level  = Logger.DEFAULT_LEVEL;
+    let levels = Logger.STANDARD_LEVELS;
+    let currentLevel = levels.indexOf( level );
+
     let appender = this;
 
     this.entries = [];
 
     this.setLevel = function(level) {
-        var idx = levels.indexOf( level );
+        let idx = levels.indexOf( level );
         if (idx >= 0) {
             currentLevel = idx;
         }
+    };
+
+    this.getCurrentLevel = function() {
+        return currentLevel;
     };
 
     this.write = function(entry) {
