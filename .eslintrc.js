@@ -10,21 +10,12 @@ module.exports = {
         "before": true
     },
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "eqeqeq": "error",
+        "curly": "error",
+        "brace-style": [ "error", "1tbs" ],
+        "indent": [ "error", 4 ],
+        "linebreak-style": [ "error", "unix" ],
+        "quotes": [ "error", "single" ],
+        "semi": [ "error", "always" ]
     }
 };

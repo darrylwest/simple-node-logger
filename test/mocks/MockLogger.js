@@ -15,10 +15,18 @@ const MockLogger = function(opts) {
     const appender = new MockAppender();
 
     // set these if not passed in
-    if (!opts) opts = {};
-    if (!opts.pid) opts.pid = 'test12345';
-    if (!opts.appenders) opts.appenders = [ appender ];
-    if (!opts.level) opts.level = 'trace';
+    if (!opts) {
+        opts = {};
+    }
+    if (!opts.pid) {
+        opts.pid = 'test12345';
+    }
+    if (!opts.appenders) {
+        opts.appenders = [ appender ];
+    }
+    if (!opts.level) {
+        opts.level = 'trace';
+    }
 
     dash.extend( this, new Logger(opts) );
 
@@ -32,8 +40,12 @@ MockLogger.createLogger = function(category, level) {
 
     const opts = {};
 
-    if (category) opts.category = category;
-    if (level) opts.level = level;
+    if (category) {
+        opts.category = category;
+    }
+    if (level) {
+        opts.level = level;
+    }
 
     return new MockLogger( opts );
 };
