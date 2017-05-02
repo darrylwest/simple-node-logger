@@ -4,17 +4,17 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/27/14 9:53 AM
  */
-const should = require('chai').should(),
-    dash = require( 'lodash' ),
-    path = require( 'path' ),
-    moment = require('moment' ),
-    RollingFileAppender = require('../lib/RollingFileAppender');
+const should = require('chai').should();
+const dash = require( 'lodash' );
+const path = require( 'path' );
+const moment = require('moment' );
+const RollingFileAppender = require('../lib/RollingFileAppender');
 
 describe('RollingFileAppender', function() {
     'use strict';
 
     const createOptions = function() {
-        var opts = {};
+        const opts = {};
 
         opts.level = 'debug';
         opts.logDirectory = process.env.HOME + '/logs';
@@ -107,33 +107,30 @@ describe('RollingFileAppender', function() {
     });
 
     describe('createFileName', function() {
-        var opts = createOptions(),
-            now = moment( '2014-02-06T18:00Z' ).utc(),
-            patterns = [
-                'YY.MM.DD',
-                'YYYY.MM.DD.HH',
-                'YYYY.MM.DD-a',
-                'YYYYMMDD',
-                'MMM-DD'
-            ],
-            expected = [
-                'app-14.02.06.log',
-                'app-2014.02.06.18.log',
-                'app-2014.02.06-pm.log',
-                'app-20140206.log',
-                'app-Feb-06.log'
-            ];
+        const opts = createOptions();
+        const now = moment( '2014-02-06T18:00Z' ).utc();
+        const patterns = [
+            'YY.MM.DD',
+            'YYYY.MM.DD.HH',
+            'YYYY.MM.DD-a',
+            'YYYYMMDD',
+            'MMM-DD'
+        ];
+        const expected = [
+            'app-14.02.06.log',
+            'app-2014.02.06.18.log',
+            'app-2014.02.06-pm.log',
+            'app-20140206.log',
+            'app-Feb-06.log'
+        ];
 
         it('should create a filename based on known pattern and date', function() {
-            var appender,
-                idx,
-                fn;
-
-            for (idx = 0; idx < patterns.length; idx++) {
+            // TODO : refactor for forEach
+            for (let idx = 0; idx < patterns.length; idx++) {
                 opts.dateFormat = patterns[ idx ];
-                appender = new RollingFileAppender( opts );
+                const appender = new RollingFileAppender( opts );
 
-                fn = appender.createFileName( now );
+                const fn = appender.createFileName( now );
 
                 fn.should.equal( expected[ idx ] );
             }

@@ -4,18 +4,18 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/7/14 9:44 AM
  */
-const should = require('chai').should(),
-    dash = require( 'lodash' ),
-    fs = require( 'fs' ),
-    Logger = require('../lib/Logger' ),
-    SimpleLogger = require( '../lib/SimpleLogger' ),
-    MockAppender = require( './mocks/MockAppender');
+const should = require('chai').should();
+const dash = require( 'lodash' );
+const fs = require( 'fs' );
+const Logger = require('../lib/Logger' );
+const SimpleLogger = require( '../lib/SimpleLogger' );
+const MockAppender = require( './mocks/MockAppender');
 
 describe('SimpleLogger', function() {
     'use strict';
 
     const createOptions = function() {
-        var opts = {};
+        const opts = {};
 
         return opts;
     };
@@ -43,7 +43,7 @@ describe('SimpleLogger', function() {
             manager.getAppenders().length.should.equal( 0 );
             manager.getLoggers().length.should.equal( 0 );
 
-            var p = manager.__protected();
+            const p = manager.__protected();
 
             should.exist( p );
             p.dfltLevel.should.equal( 'info' );
@@ -61,7 +61,7 @@ describe('SimpleLogger', function() {
         const manager = new SimpleLogger( createOptions() );
 
         it('should create a basic logger with console appender', function() {
-            var log = manager.createLogger('MyCategory', 'warn');
+            const log = manager.createLogger('MyCategory', 'warn');
 
             should.exist( log );
             log.__protected().category.should.equal( 'MyCategory' );
@@ -80,13 +80,13 @@ describe('SimpleLogger', function() {
         const manager = new SimpleLogger( opts );
 
         it('should create a simple logger with a domain', function() {
-            var p = manager.__protected();
+            const p = manager.__protected();
             p.domain.should.equal( opts.domain );
             p.dfltLevel.should.equal( opts.level );
         });
 
         it('should create a log with specified domain, category and level', function() {
-            var log = manager.createLogger('MyCat');
+            const log = manager.createLogger('MyCat');
 
             log.getLevel().should.equal( opts.level );
             log.__protected().domain.should.equal( opts.domain );
@@ -102,7 +102,7 @@ describe('SimpleLogger', function() {
         it('should add a new appender to the list', function() {
             manager.getAppenders().length.should.equal( 0 );
 
-            var appender = manager.addAppender( new MockAppender() );
+            const appender = manager.addAppender( new MockAppender() );
 
             should.exist( appender );
             appender.should.be.instanceof( MockAppender );
@@ -114,7 +114,7 @@ describe('SimpleLogger', function() {
         const manager = new SimpleLogger( createOptions() );
 
         it('should create a new console appender and add it to the appenders list', function() {
-            var appender = manager.createConsoleAppender();
+            const appender = manager.createConsoleAppender();
             should.exist( appender );
             manager.getAppenders().length.should.equal( 1 );
         });
@@ -148,13 +148,12 @@ describe('SimpleLogger', function() {
     });
 
     describe('startRefreshThread', function() {
-        var opts = createOptions(),
-            manager;
+        const opts = createOptions();
 
         opts.loggerConfigFile = __dirname + '/fixtures/logger-config.json';
         opts.refresh = 2000;
 
-        manager = new SimpleLogger( opts );
+        const manager = new SimpleLogger( opts );
 
         it('should start refresh thread if config file and refresh are set', function(done) {
             manager.startRefreshThread = function() {
@@ -176,16 +175,15 @@ describe('SimpleLogger', function() {
     });
 
     describe('readConfig', function() {
-        var opts = createOptions(),
-            manager;
+        const opts = createOptions();
 
         opts.loggerConfigFile = __dirname + '/fixtures/logger-config.json';
         opts.refresh = 2000;
 
-        manager = new SimpleLogger( opts );
+        const manager = new SimpleLogger( opts );
 
         it('should read and parse a valid configuration file', function(done) {
-            var callback = function(err) {
+            const callback = function(err) {
                 should.not.exist( err );
 
                 // TODO test the appenders to see if at the correct level
@@ -202,10 +200,10 @@ describe('SimpleLogger', function() {
     describe('createSimpleLogger', function() {
 
         it('should create a simple logger with a single console adapter', function() {
-            var opts = {
-                    timestampFormat:'x'
-                },
-                log = SimpleLogger.createSimpleLogger( opts );
+            const opts = {
+                timestampFormat:'x'
+            };
+            const log = SimpleLogger.createSimpleLogger( opts );
 
             should.exist( log );
         });
