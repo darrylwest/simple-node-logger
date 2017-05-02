@@ -198,14 +198,41 @@ describe('SimpleLogger', function() {
     });
 
     describe('createSimpleLogger', function() {
+        it('should create a simple logger with a single console adapter when invoked with null options', function() {
+            const log = SimpleLogger.createSimpleLogger();
 
-        it('should create a simple logger with a single console adapter', function() {
+            should.exist( log );
+            log.getLevel().should.equal('info');
+            const appenders = log.getAppenders();
+            appenders.length.should.equal(1);
+            appenders[0].getTypeName().should.equal('ConsoleAppender');
+        });
+
+        it('should create a simple logger with a single console adapter when invoked with format options', function() {
             const opts = {
-                timestampFormat:'x'
+                timestampFormat:'x' // unix timestamp
             };
             const log = SimpleLogger.createSimpleLogger( opts );
 
             should.exist( log );
+            log.getLevel().should.equal('info');
+            const appenders = log.getAppenders();
+            appenders.length.should.equal(1);
+            const appender = appenders[0];
+            appender.getTypeName().should.equal('ConsoleAppender');
+            const dt = new Date('2017-05-01T01:01:01');
+            appender.formatTimestamp(dt).should.equal('1493600461000');
+        });
+
+        it('should create a simple logger with  console and file appenders when invoked with a filename', function() {
+            const log = SimpleLogger.createSimpleLogger('/tmp/mytmpfile.log');
+
+            should.exist( log );
+            log.getLevel().should.equal('info');
+            const appenders = log.getAppenders();
+            appenders.length.should.equal(2);
+            appenders[0].getTypeName().should.equal('ConsoleAppender');
+            appenders[1].getTypeName().should.equal('FileAppender');
         });
     });
 });
