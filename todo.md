@@ -1,6 +1,11 @@
 # Simple Node Logger To Do List
 - - -
 
+## Before next release
+
+* create functional tests to exersize all static methods
+* insure 100% code coverage
+
 ## General
 
 * add file purger for rolling file logger

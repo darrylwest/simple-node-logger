@@ -12,8 +12,8 @@ const should = require('chai').should(),
 describe('AbstractAppender', function() {
     'use strict';
 
-    var createLogger = function() {
-        var opts = {};
+    const createLogger = function(options) {
+        var opts = Object.assign({}, options);
 
         opts.domain = 'MyDomain';
         opts.category = 'MyCategory';
@@ -22,8 +22,8 @@ describe('AbstractAppender', function() {
         return new Logger( opts );
     };
 
-    var createOptions = function() {
-        var opts = {};
+    const  createOptions = function(options) {
+        var opts = Object.assign({}, options);
 
         opts.typeName = 'FooAppender';
 
@@ -57,12 +57,12 @@ describe('AbstractAppender', function() {
     });
 
     describe('formatEntry', function() {
-        var appender = new AbstractAppender( createOptions() ),
-            logger = createLogger();
+        const  appender = new AbstractAppender( createOptions() );
+        const logger = createLogger();
 
         it('should create and format fields for a specified log entry', function() {
-            var entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] ),
-                fields = appender.formatEntry( entry );
+            const entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
+            const fields = appender.formatEntry( entry );
 
             should.exist( fields );
             fields.length.should.equal( 5 );
@@ -70,17 +70,19 @@ describe('AbstractAppender', function() {
     });
 
     describe('formatObject', function() {
-        var appender = new AbstractAppender( createOptions() );
+        const appender = new AbstractAppender( createOptions() );
 
         it('should format a complex object into human readable output', function() {
-            var formatted,
-                list = [
-                    { name:'flarb', date:new Date() },
-                    appender
-                ];
+            const list = [
+                { 
+                    name:'flarb', 
+                    date:new Date() 
+                },
+                appender
+            ];
 
             list.forEach(function(obj) {
-                formatted = appender.formatObject( obj );
+                const formatted = appender.formatObject( obj );
 
                 // console.log( formatted );
                 formatted.should.be.a('string');
@@ -89,12 +91,12 @@ describe('AbstractAppender', function() {
     });
 
     describe('formatMessage', function() {
-        var appender = new AbstractAppender( createOptions() );
+        const appender = new AbstractAppender( createOptions() );
 
         it('should format a list of log messages', function() {
-            var list = [ 'this is a test, time: ', new Date(), ' ', { name:'flarb', date:new Date() }, ' ', appender ];
+            const list = [ 'this is a test, time: ', new Date(), ' ', { name:'flarb', date:new Date() }, ' ', appender ];
 
-            var formatted = appender.formatMessage( list );
+            const formatted = appender.formatMessage( list );
 
             // console.log( formatted );
             should.exist( formatted );
@@ -103,13 +105,13 @@ describe('AbstractAppender', function() {
     });
 
     describe('#timestampFormat', function() {
-        var ts = 1428516587697; // 2015-04-08T18:09:47.697Z
+        const ts = 1428516587697; // 2015-04-08T18:09:47.697Z
 
         it('should have the default format', function() {
-            var opts = createOptions(),
-                appender = new AbstractAppender( opts),
-                sdt = appender.formatTimestamp( ts),
-                parts = sdt.split('.');
+            const opts = createOptions();
+            const appender = new AbstractAppender( opts );
+            const sdt = appender.formatTimestamp( ts);
+            const parts = sdt.split('.');
 
             // get this to pass for all timezones
             parts[0].split(':')[1].should.equal( '09' );
@@ -120,12 +122,12 @@ describe('AbstractAppender', function() {
         });
 
         it('should have a custom format from options', function() {
-            var opts = {
-                    typeName:'customerTSAppender',
-                    timestampFormat:'x' // unix timestamp
-                },
-                appender = new AbstractAppender( opts),
-                sdt = appender.formatTimestamp( ts );
+            const opts = {
+                typeName:'customerTSAppender',
+                timestampFormat:'x' // unix timestamp
+            };
+            const appender = new AbstractAppender( opts);
+            const sdt = appender.formatTimestamp( ts );
 
             sdt.should.equal( ts.toString() );
         });
