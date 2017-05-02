@@ -16,6 +16,7 @@ module.exports = {
         "brace-style": [ "error", "1tbs" ],
         "indent": [ "error", 4 ],
         "linebreak-style": [ "error", "unix" ],
+        "no-param-reassign": [ "error", { props: false } ],
         "quotes": [ "error", "single" ],
         "semi": [ "error", "always" ]
     }

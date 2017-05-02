@@ -8,16 +8,15 @@ const dash = require('lodash' ),
     Logger = require('../../lib/Logger' ),
     MockAppender = require('./MockAppender');
 
-const MockLogger = function(opts) {
+const MockLogger = function(options) {
     'use strict';
+
+    const opts = Object.assign({}, options);
 
     // const mock = this;
     const appender = new MockAppender();
 
     // set these if not passed in
-    if (!opts) {
-        opts = {};
-    }
     if (!opts.pid) {
         opts.pid = 'test12345';
     }
