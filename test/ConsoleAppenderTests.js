@@ -4,16 +4,16 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/6/14 12:18 PM
  */
-const should = require('chai').should(),
-    dash = require( 'lodash' ),
-    Logger = require('../lib/Logger' ),
-    ConsoleAppender = require('../lib/ConsoleAppender');
+const should = require('chai').should();
+const dash = require( 'lodash' );
+const Logger = require('../lib/Logger' );
+const ConsoleAppender = require('../lib/ConsoleAppender');
 
 describe('ConsoleAppender', function() {
     'use strict';
 
-    const createLogger = function() {
-        var opts = {};
+    const createLogger = function(options) {
+        const opts = Object.assign({}, options);
 
         opts.domain = 'MyDomain';
         opts.category = 'MyCategory';
@@ -22,8 +22,8 @@ describe('ConsoleAppender', function() {
         return new Logger( opts );
     };
 
-    const createOptions = function() {
-        var opts = {};
+    const createOptions = function(options) {
+        const opts = Object.assign({}, options);
 
         opts.level = 'debug';
 
@@ -60,13 +60,10 @@ describe('ConsoleAppender', function() {
     });
 
     describe('write/format', function() {
-        var opts = createOptions(),
-            logger = createLogger();
+        const opts = createOptions();
+        const logger = createLogger();
 
         it('should write a formatted entry', function(done) {
-            var appender,
-                entry;
-
             opts.writer = function(str) {
                 should.exist( str );
 
@@ -78,24 +75,21 @@ describe('ConsoleAppender', function() {
                 done();
             };
 
-            appender = new ConsoleAppender( opts );
-            entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
+            const appender = new ConsoleAppender( opts );
+            const entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
             appender.write( entry );
 
         });
 
         it('should skip log entries less than the specified level', function(done) {
-            var appender,
-                entry;
-
             opts.writer = function(str) {
                 should.not.exist( str );
             };
 
             opts.level = 'fatal';
 
-            appender = new ConsoleAppender( opts );
-            entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
+            const appender = new ConsoleAppender( opts );
+            const entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
             appender.write( entry );
 
             process.nextTick(function() {

@@ -4,17 +4,17 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/5/14 6:28 PM
  */
-const should = require('chai').should(),
-    dash = require( 'lodash' ),
-    randomData = require( 'random-fixture-data' ),
-    Logger = require('../lib/Logger' ),
-    MockAppender = require( './mocks/MockAppender');
+const should = require('chai').should();
+const dash = require( 'lodash' );
+const randomData = require( 'random-fixture-data' );
+const Logger = require('../lib/Logger' );
+const MockAppender = require( './mocks/MockAppender');
 
 describe('Logger', function() {
     'use strict';
 
-    const createOptions = function() {
-        const opts = {};
+    const createOptions = function(options) {
+        const opts = Object.assign({}, options);
 
         opts.category = 'MyCat';
         opts.appenders = [ new MockAppender() ];
@@ -47,7 +47,7 @@ describe('Logger', function() {
         });
 
         it('should have all expected methods by size and type', function() {
-            var allMethods = methods.concat( Logger.STANDARD_LEVELS );
+            const allMethods = methods.concat( Logger.STANDARD_LEVELS );
             dash.functionsIn( logger ).length.should.equal( allMethods.length );
             allMethods.forEach(function(method) {
                 logger[ method ].should.be.a( 'function' );
@@ -55,7 +55,7 @@ describe('Logger', function() {
         });
 
         it('should have one appender', function() {
-            var appenders = logger.getAppenders();
+            const appenders = logger.getAppenders();
             should.exist( appenders );
             appenders.length.should.equal( 1 );
         });
@@ -66,7 +66,7 @@ describe('Logger', function() {
     });
 
     describe('log', function() {
-        var opts = createOptions();
+        const opts = createOptions();
 
         opts.level = Logger.STANDARD_LEVELS[0]; // all
         opts.domain = 'MyApp';
@@ -95,9 +95,9 @@ describe('Logger', function() {
         });
 
         it('should contain all entry attributes', function(done) {
-            var logger = new Logger( opts ),
-                appender = new MockAppender(),
-                text = randomData.sentence;
+            const logger = new Logger( opts );
+            const appender = new MockAppender();
+            const text = randomData.sentence;
 
             logger.setAppenders( [ appender ] );
 
