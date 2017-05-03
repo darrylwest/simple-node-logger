@@ -47,7 +47,7 @@ describe('RollingFileAppender', function() {
             appender.should.be.instanceof( RollingFileAppender );
             appender.getTypeName().should.equal('RollingFileAppender');
 
-            var p = appender.__protected();
+            const p = appender.__protected();
             should.exist( p );
             p.writers.length.should.equal( 0 );
             p.openWriter.should.be.a( 'function' );
@@ -60,7 +60,16 @@ describe('RollingFileAppender', function() {
             });
         });
 
-        it('should check openWriter can open a new file with default createFileName');
+        it.only('should check openWriter can open a new file with default createFileName', function() {
+            const p = appender.__protected();
+            p.openWriter.should.be.a('function');
+            p.writers.length.should.equal( 0 );
+            const openWriter = p.openWriter;
+            openWriter.should.be.a('function');
+            openWriter();
+            p.writers.length.should.equal( 1 );
+        });
+
         it('should check openWriter can optn a new files with filename passed in');
     });
 
