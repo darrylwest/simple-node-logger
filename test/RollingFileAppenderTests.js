@@ -60,7 +60,7 @@ describe('RollingFileAppender', function() {
             });
         });
 
-        it.only('should check openWriter can open a new file with default createFileName', function() {
+        it('should check openWriter can open a new file with default createFileName', function() {
             const p = appender.__protected();
             p.openWriter.should.be.a('function');
             p.writers.length.should.equal( 0 );
