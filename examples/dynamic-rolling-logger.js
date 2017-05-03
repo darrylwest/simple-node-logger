@@ -29,11 +29,18 @@ var appender = log.getAppenders()[0];
 console.log('write to file: ', appender.__protected().currentFile );
 
 // rolling file writer uses interval, so we need to exit 
+let count = 5
 setInterval(function() {
     log.trace('trace time: ', new Date().toJSON());
     log.debug('debug time: ', new Date().toJSON());
     log.info('info time: ', new Date().toJSON());
     log.warn('warn mark tm');
     log.error('error mark tm');
+
+    console.log(count);
+    count--;
+    if (count < 0) {
+        process.exit(0);
+    }
 }, 1000);
 

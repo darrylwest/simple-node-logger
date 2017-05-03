@@ -17,6 +17,9 @@ test:
 	@( [ -d node_modules ] || make npm )
 	@( $(MOCHA) $(TESTFILES) && make lint )
 
+integration:
+	@( ./test/integration/run-examples.sh )
+
 watch:
 	@( ./watcher.js )
 
