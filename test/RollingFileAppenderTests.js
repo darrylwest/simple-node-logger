@@ -59,6 +59,9 @@ describe('RollingFileAppender', function() {
                 appender[ method ].should.be.a( 'function' );
             });
         });
+
+        it('should check openWriter can open a new file with default createFileName');
+        it('should check openWriter can optn a new files with filename passed in');
     });
 
     describe('checkForRoll', function() {
