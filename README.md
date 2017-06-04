@@ -56,7 +56,7 @@ or
     // create a rolling file logger based on date/time that fires process events
     const opts = {
         errorEventName:'error',
-        logDirectory:'/mylogfiles',
+        logDirectory:'/mylogfiles', // NOTE: folder must exist and be writable...
         fileNamePattern:'roll-<DATE>.log',
         dateFormat:'YYYY.MM.DD'
     };
@@ -105,6 +105,10 @@ If you create a logger with a category name, all log statements will include thi
 	 14:14:21.363 INFO  MyCategory subscription to /devchannel accepted at 2014-04-10T14:20:52.938Z
 	 
 ## Appenders
+
+You can create a single logger / log manager and add multiple appenders with different log levels.  For example, you can add a console appender that has a log level of warn and a file appender to debug. 
+
+_See examples/category-logger.js for an example_.
 
 ### Console
 
@@ -235,4 +239,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.25</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.26</em></small></p>
