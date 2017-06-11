@@ -29,6 +29,6 @@
     "random-fixture-data": "^2.0.17"
   },
   "author": "darryl.west@raincitysoftware.com",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/darrylwest/simple-node-logger"
 }
