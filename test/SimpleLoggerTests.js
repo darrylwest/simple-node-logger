@@ -220,7 +220,7 @@ describe('SimpleLogger', function() {
             appenders.length.should.equal(1);
             const appender = appenders[0];
             appender.getTypeName().should.equal('ConsoleAppender');
-            const dt = new Date('2017-05-01T01:01:01');
+            const dt = new Date('2017-05-01T01:01:01Z');
             appender.formatTimestamp(dt).should.equal('1493600461000');
         });
 
