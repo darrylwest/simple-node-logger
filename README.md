@@ -242,6 +242,7 @@ Apache 2.0
 
 * 0.93.29: when an Error object is logged, the message and stack trace are sent to log targets
 * 0.93.30: fixed example/category-logger.js and examples/domain-logger.js to not double-log
+* 0.93.31: added thisArg to methods in AbstractAppender to enable proper binding and full override when extending
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.31</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.32</em></small></p>
