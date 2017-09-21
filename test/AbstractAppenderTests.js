@@ -88,6 +88,14 @@ describe('AbstractAppender', function() {
                 formatted.should.be.a('string');
             });
         });
+
+        it('should format an error object with message and stack trace', function() {
+            const err = new Error('this is my error');
+            const fmt = appender.formatObject(err);
+            fmt.should.be.a('string');
+            fmt.should.contain('this is my error');
+            fmt.should.contain('at ');
+        });
     });
 
     describe('formatMessage', function() {

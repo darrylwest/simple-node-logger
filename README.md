@@ -239,4 +239,4 @@ MockLogger extends Logger and uses MockAppender to capture log entries.
 Apache 2.0
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.26</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.29</em></small></p>
