@@ -12,8 +12,8 @@ var SimpleLogger = require('../lib/SimpleLogger'),
     log1,
     log2;
 
-manager.addAppender( manager.createConsoleAppender() );
-manager.addAppender( manager.createFileAppender( { logFilePath:filename } ));
+manager.createConsoleAppender();
+manager.createFileAppender( { logFilePath:filename } );
 
 log1 = manager.createLogger( 'CategoryOne' );
 log2 = manager.createLogger( 'CategoryTwo' );

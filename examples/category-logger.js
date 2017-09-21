@@ -12,8 +12,8 @@ process.on('error', (msg) => {
     console.log('Error event caught: ', JSON.stringify(msg));
 });
 
-manager.addAppender( manager.createConsoleAppender() );
-manager.addAppender( manager.createFileAppender( { logFilePath:filename } ));
+manager.createConsoleAppender();
+manager.createFileAppender( { logFilePath:filename } );
 
 log1 = manager.createLogger( 'CategoryOne', 'trace' );
 log2 = manager.createLogger( 'CategoryTwo', 'trace' );

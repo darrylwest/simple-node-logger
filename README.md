@@ -241,6 +241,7 @@ Apache 2.0
 ## Recent updates...
 
 * 0.93.29: when an Error object is logged, the message and stack trace are sent to log targets
+* 0.93.30: fixed example/category-logger.js and examples/domain-logger.js to not double-log
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.29</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.30</em></small></p>
