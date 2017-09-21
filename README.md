@@ -244,4 +244,4 @@ Apache 2.0
 * 0.93.30: fixed example/category-logger.js and examples/domain-logger.js to not double-log
 
 - - -
-<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.30</em></small></p>
+<p><small><em>Copyright © 2014-2017, rain city software | Version 0.93.31</em></small></p>

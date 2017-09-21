@@ -1,11 +1,5 @@
 #!/usr/bin/env node
 
-var opts = {
-    logDirectory: __dirname + '/../logs',
-    fileNamePattern: 'apptest-<date>.log',
-    dateFormat:'YYYY.MM.DD-HHa'
-};
-
 var manager = require('../lib/SimpleLogger').createLogManager( );
 log = manager.createLogger('MyCategory');
 
