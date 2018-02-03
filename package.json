@@ -1,6 +1,6 @@
 {
   "name": "simple-node-logger",
-  "version": "0.93.33",
+  "version": "0.93.34",
   "description": "A node console and file logger suitable for small, medium and large production projects.",
   "main": "index.js",
   "repository": {
@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "lodash": "^4.17.2",
-    "moment": "^2.18.1"
+    "moment": "^2.20.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
