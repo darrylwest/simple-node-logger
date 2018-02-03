@@ -23,6 +23,7 @@ log1.debug('this is a simple debug log statement (should not show)');
 log1.info('this is a simple info log statement/entry');
 log2.warn('this is a simple warn log statement/entry');
 log1.error('this is a simple error log statement/entry');
+log1.error();
 log2.fatal('this is a simple fatal log statement/entry');
 
 log2.trace('this is a simple trace log statement (should show)');

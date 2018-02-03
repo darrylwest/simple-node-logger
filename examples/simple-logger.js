@@ -9,6 +9,9 @@ log.warn('this is a simple warn log statement/entry');
 log.error('this is a simple error log statement/entry');
 log.fatal('this is a simple fatal log statement/entry');
 
+// test logging a null
+log.error();
+
 log.info('set the level to all');
 log.setLevel('all');
 log.trace('this is a simple trace log statement (should show)');
