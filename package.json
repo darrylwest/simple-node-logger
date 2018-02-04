@@ -1,6 +1,6 @@
 {
   "name": "simple-node-logger",
-  "version": "0.93.35",
+  "version": "0.93.36",
   "description": "A node console and file logger suitable for small, medium and large production projects.",
   "main": "index.js",
   "repository": {
@@ -28,6 +28,11 @@
     "eslint": "^3.19.0",
     "random-fixture-data": "^2.0.17"
   },
+  "files": [
+    "index.js",
+    "lib/",
+    "test/mocks"
+  ],
   "author": "darryl.west@raincitysoftware.com",
   "license": "Apache-2.0",
   "homepage": "https://github.com/darrylwest/simple-node-logger"
