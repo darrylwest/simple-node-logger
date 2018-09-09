@@ -17,7 +17,7 @@ describe('RollingFileAppender', function() {
         const opts = {};
 
         opts.level = 'debug';
-        opts.logDirectory = process.env.HOME + '/logs';
+        opts.logDirectory = '/tmp/';
         opts.fileNamePattern = 'app-<Date>.log';
         opts.autoOpen = false;
 
