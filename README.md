@@ -69,7 +69,7 @@ const opts = {
         dateFormat:'YYYY.MM.DD'
 };
 const log = require('simple-node-logger').createRollingFileLogger( opts );
-```    
+```
 
 or
 
