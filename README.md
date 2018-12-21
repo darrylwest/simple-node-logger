@@ -266,4 +266,4 @@ Apache 2.0
 * 0.93.31: added thisArg to methods in AbstractAppender to enable proper binding and full override when extending
 
 - - -
-<p><small><em>Copyright © 2014-2018, rain city software | Version 0.93.40</em></small></p>
+<p><small><em>Copyright © 2014-2018, rain city software | Version 0.93.41</em></small></p>
