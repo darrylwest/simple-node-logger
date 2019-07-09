@@ -19,7 +19,11 @@
     "console logger"
   ],
   "dependencies": {
+<<<<<<< HEAD
     "lodash": "^4.17.12",
+=======
+    "lodash": ">=4.17.11",
+>>>>>>> af379702cbc3d2e13f6bc6ce5eb41814bec3bb35
     "moment": "^2.20.1"
   },
   "devDependencies": {
