@@ -1,3 +1,4 @@
 node_modules
 file-test.log
 logs/
+test/
