@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-var manager = require('../lib/SimpleLogger').createLogManager( );
-log = manager.createLogger('MyCategory');
+const manager = require('../lib/SimpleLogger').createLogManager();
+const log = manager.createLogger('MyCategory');
 
 // write some stuff...
 log.trace('this is a simple trace log statement (should not show)');

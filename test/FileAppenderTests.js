@@ -5,8 +5,8 @@
  * @created: 7/7/14 5:15 PM
  */
 const should = require('chai').should();
-const dash = require( 'lodash' );
-const Logger = require('../lib/Logger' );
+const dash = require('lodash');
+const Logger = require('../lib/Logger');
 const FileAppender = require('../lib/FileAppender');
 
 describe('FileAppender', function() {
@@ -19,7 +19,7 @@ describe('FileAppender', function() {
         opts.category = 'MyCategory';
         opts.level = 'debug';
 
-        return new Logger( opts );
+        return new Logger(opts);
     };
 
     const createOptions = function(options) {
@@ -33,31 +33,31 @@ describe('FileAppender', function() {
     };
 
     describe('#instance', function() {
-        var appender = new FileAppender( createOptions() ),
-            methods = [
-                'formatter',
-                'write',
-                'setLevel',
-                'closeWriter',
-                'getTypeName',
-                'formatEntry',
-                'formatLevel',
-                'formatTimestamp',
-                'formatMessage',
-                'formatDate',
-                'formatObject'
-            ];
+        const appender = new FileAppender(createOptions());
+        const methods = [
+            'formatter',
+            'write',
+            'setLevel',
+            'closeWriter',
+            'getTypeName',
+            'formatEntry',
+            'formatLevel',
+            'formatTimestamp',
+            'formatMessage',
+            'formatDate',
+            'formatObject'
+        ];
 
         it('should create an instance of FileAppender', function() {
-            should.exist( appender );
-            appender.should.be.instanceof( FileAppender );
+            should.exist(appender);
+            appender.should.be.instanceof(FileAppender);
             appender.getTypeName().should.equal('FileAppender');
         });
 
         it('should have all expected methods by size and type', function() {
-            dash.functionsIn( appender ).length.should.equal( methods.length );
+            dash.functionsIn(appender).length.should.equal(methods.length);
             methods.forEach(function(method) {
-                appender[ method ].should.be.a( 'function' );
+                appender[method].should.be.a('function');
             });
         });
     });
@@ -69,7 +69,7 @@ describe('FileAppender', function() {
         it('should write a formatted entry', function(done) {
             opts.writer = {};
             opts.writer.write = function(str) {
-                should.exist( str );
+                should.exist(str);
 
                 str.should.contain('INFO');
                 str.should.contain(':');
@@ -77,22 +77,22 @@ describe('FileAppender', function() {
                 done();
             };
 
-            const appender = new FileAppender( opts );
-            const entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
-            appender.write( entry );
+            const appender = new FileAppender(opts);
+            const entry = logger.createEntry('info', ['this is a test, time: ', new Date()]);
+            appender.write(entry);
 
         });
 
         it('should skip log entries less than the specified level', function(done) {
             opts.writer = function(str) {
-                should.not.exist( str );
+                should.not.exist(str);
             };
 
             opts.level = 'fatal';
 
-            const appender = new FileAppender( opts );
-            const entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
-            appender.write( entry );
+            const appender = new FileAppender(opts);
+            const entry = logger.createEntry('info', ['this is a test, time: ', new Date()]);
+            appender.write(entry);
 
             process.nextTick(function() {
                 done();

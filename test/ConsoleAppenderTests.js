@@ -5,8 +5,8 @@
  * @created: 7/6/14 12:18 PM
  */
 const should = require('chai').should();
-const dash = require( 'lodash' );
-const Logger = require('../lib/Logger' );
+const dash = require('lodash');
+const Logger = require('../lib/Logger');
 const ConsoleAppender = require('../lib/ConsoleAppender');
 
 describe('ConsoleAppender', function() {
@@ -19,7 +19,7 @@ describe('ConsoleAppender', function() {
         opts.category = 'MyCategory';
         opts.level = 'debug';
 
-        return new Logger( opts );
+        return new Logger(opts);
     };
 
     const createOptions = function(options) {
@@ -31,30 +31,30 @@ describe('ConsoleAppender', function() {
     };
 
     describe('#instance', function() {
-        const appender = new ConsoleAppender( createOptions() ),
-            methods = [
-                'formatter',
-                'write',
-                'setLevel',
-                'getTypeName',
-                'formatEntry',
-                'formatLevel',
-                'formatTimestamp',
-                'formatMessage',
-                'formatDate',
-                'formatObject'
-            ];
+        const appender = new ConsoleAppender(createOptions());
+        const methods = [
+            'formatter',
+            'write',
+            'setLevel',
+            'getTypeName',
+            'formatEntry',
+            'formatLevel',
+            'formatTimestamp',
+            'formatMessage',
+            'formatDate',
+            'formatObject'
+        ];
 
         it('should create an instance of ConsoleAppender', function() {
-            should.exist( appender );
-            appender.should.be.instanceof( ConsoleAppender );
+            should.exist(appender);
+            appender.should.be.instanceof(ConsoleAppender);
             appender.getTypeName().should.equal('ConsoleAppender');
         });
 
         it('should have all expected methods by size and type', function() {
-            dash.functionsIn( appender ).length.should.equal( methods.length );
+            dash.functionsIn(appender).length.should.equal(methods.length);
             methods.forEach(function(method) {
-                appender[ method ].should.be.a( 'function' );
+                appender[method].should.be.a('function');
             });
         });
     });
@@ -65,7 +65,7 @@ describe('ConsoleAppender', function() {
 
         it('should write a formatted entry', function(done) {
             opts.writer = function(str) {
-                should.exist( str );
+                should.exist(str);
 
                 // console.log( str );
 
@@ -75,22 +75,22 @@ describe('ConsoleAppender', function() {
                 done();
             };
 
-            const appender = new ConsoleAppender( opts );
-            const entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
-            appender.write( entry );
+            const appender = new ConsoleAppender(opts);
+            const entry = logger.createEntry('info', ['this is a test, time: ', new Date()]);
+            appender.write(entry);
 
         });
 
         it('should skip log entries less than the specified level', function(done) {
             opts.writer = function(str) {
-                should.not.exist( str );
+                should.not.exist(str);
             };
 
             opts.level = 'fatal';
 
-            const appender = new ConsoleAppender( opts );
-            const entry = logger.createEntry( 'info', [ 'this is a test, time: ', new Date() ] );
-            appender.write( entry );
+            const appender = new ConsoleAppender(opts);
+            const entry = logger.createEntry('info', ['this is a test, time: ', new Date()]);
+            appender.write(entry);
 
             process.nextTick(function() {
                 done();
