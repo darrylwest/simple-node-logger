@@ -31,7 +31,8 @@
   "files": [
     "index.js",
     "lib/",
-    "test/mocks"
+    "test/mocks",
+    "index.d.ts"
   ],
   "author": "darryl.west@raincitysoftware.com",
   "license": "Apache-2.0",
