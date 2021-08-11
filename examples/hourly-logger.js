@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-var opts = {
+const opts = {
     domain:'Domain-A',
     logDirectory: __dirname + '/../logs',
     fileNamePattern: 'hourly-test-<date>.log',
     dateFormat:'YYYY.MM.DD-HH'
 };
 
-var log = require('../lib/SimpleLogger').createRollingFileLogger( opts );
+const log = require('../lib/SimpleLogger').createRollingFileLogger( opts );
 
 setInterval(function() {
     // write some stuff...
@@ -25,7 +25,7 @@ setInterval(function() {
 
 }, 800);
 
-var appender = log.getAppenders()[0];
+const appender = log.getAppenders()[0];
 console.log('write to file: ', appender.__protected().currentFile );
 
 setTimeout(function() {

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var opts = {
-        timestampFormat:'mm:ss.SSS'
-    },
-    log = require('../lib/SimpleLogger').createSimpleLogger( opts );
+const opts = {
+    timestampFormat: 'mm:ss.SSS'
+};
+const log = require('../lib/SimpleLogger').createSimpleLogger(opts);
 
 log.trace('this is a simple trace log statement (should not show)');
 log.debug('this is a simple debug log statement (should not show)');

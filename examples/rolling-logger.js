@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-var opts = {
+const opts = {
     logDirectory: __dirname + '/../logs',
     fileNamePattern: 'apptest-<date>.log',
     dateFormat:'YYYY.MM.DD-HHa'
 };
 
-var log = require('../lib/SimpleLogger').createRollingFileLogger( opts );
+const log = require('../lib/SimpleLogger').createRollingFileLogger( opts );
 
 // write some stuff...
 log.trace('this is a simple trace log statement (should not show)');
@@ -21,10 +21,10 @@ log.setLevel('all');
 log.trace('this is a simple trace log statement (should show)');
 log.debug('this is a simple debug log statement (should show)');
 
-var appender = log.getAppenders()[0];
+const appender = log.getAppenders()[0];
 console.log('write to file: ', appender.__protected().currentFile );
 
-// rolling file writer uses interval, so we need to exit 
+// rolling file writer uses interval, so we need to exit
 setTimeout(function() {
     console.log('exiting...');
     process.exit( 0 );

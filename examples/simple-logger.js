@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const log = require('../lib/SimpleLogger').createSimpleLogger({level:'info'});
+const log = require('../lib/SimpleLogger').createSimpleLogger({level: 'info'});
 
 log.trace('this is a simple trace log statement (should not show)');
 log.debug('this is a simple debug log statement (should not show)');
@@ -19,11 +19,11 @@ log.debug('this is a simple debug log statement (should show)');
 
 // example of an override
 log.warn = function() {
-    var args = Array.prototype.slice.call( arguments ),
-        entry = log.log('warn', args);
+    const args = Array.prototype.slice.call(arguments);
+    const entry = log.log('warn', args);
 
     process.nextTick(function() {
-        console.log( 'custom:', JSON.stringify( entry ) );
+        console.log('custom:', JSON.stringify(entry));
     });
 };
 

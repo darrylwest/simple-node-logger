@@ -1,35 +1,37 @@
 #!/usr/bin/env node
 
 const SimpleLogger = require('../index.js');
-    Logger = require('../lib/Logger'),
-    AbstractAppender = SimpleLogger.AbstractAppender,
-    manager = new SimpleLogger();
+const Logger = require('../lib/Logger');
+const AbstractAppender = SimpleLogger.AbstractAppender;
+const manager = new SimpleLogger();
 
 const JSONAppender = function(options = {}) {
-    const appender = this,
-        opts = {
-            typeName:'JSONAppender'
-        };
+    const appender = this;
+    const opts = {
+        typeName: 'JSONAppender'
+    };
 
+    // eslint-disable-next-line no-unused-vars
     let level = options.level || Logger.STANDARD_LEVELS[1];
     let levels = options.levels || Logger.STANDARD_LEVELS;
 
-    AbstractAppender.extend( this, opts );
+    AbstractAppender.extend(this, opts);
 
     this.write = function(entry) {
-        var fields = appender.formatEntry( entry );
-        process.stdout.write( JSON.stringify( fields ) + '\n');
+        const fields = appender.formatEntry(entry);
+        process.stdout.write(JSON.stringify(fields) + '\n');
     };
 
     this.setLevel = function(level) {
         const idx = levels.indexOf(level);
         if (idx >= 0) {
+            // eslint-disable-next-line no-param-reassign
             level = idx;
         }
     };
 };
 
-manager.addAppender( new JSONAppender() );
+manager.addAppender(new JSONAppender());
 const log = manager.createLogger('JsonTest');
 
 log.trace('this is a simple trace log statement (should not show)');

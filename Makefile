@@ -1,4 +1,4 @@
-JSFILES=index.js lib/*.js test/*.js test/mocks/*.js
+JSFILES=index.js lib/*.js test/*.js test/mocks/*.js examples/*.js
 TESTFILES=test/*.js
 ESLINT=node_modules/.bin/eslint
 MOCHA=node_modules/.bin/mocha

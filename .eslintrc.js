@@ -18,6 +18,12 @@ module.exports = {
         "linebreak-style": [ "error", "unix" ],
         "no-param-reassign": [ "error", { props: false } ],
         "quotes": [ "error", "single" ],
-        "semi": [ "error", "always" ]
+        "semi": [ "error", "always" ],
+        "one-var": ["error", "never"],
+        "space-before-function-paren": ["error", {
+            "anonymous": "never",
+            "named": "never",
+            "asyncArrow": "always"
+        }],
     }
 };

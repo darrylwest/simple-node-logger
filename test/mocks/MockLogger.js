@@ -4,9 +4,9 @@
  * @author: darryl.west@raincitysoftware.com
  * @created: 7/8/14 5:16 PM
  */
-const dash = require('lodash' ),
-    Logger = require('../../lib/Logger' ),
-    MockAppender = require('./MockAppender');
+const dash = require('lodash');
+const Logger = require('../../lib/Logger');
+const MockAppender = require('./MockAppender');
 
 const MockLogger = function(options) {
     'use strict';
@@ -21,13 +21,13 @@ const MockLogger = function(options) {
         opts.pid = 'test12345';
     }
     if (!opts.appenders) {
-        opts.appenders = [ appender ];
+        opts.appenders = [appender];
     }
     if (!opts.level) {
         opts.level = 'trace';
     }
 
-    dash.extend( this, new Logger(opts) );
+    dash.extend(this, new Logger(opts));
 
     this.getLogEntries = function() {
         return appender.entries;
@@ -46,7 +46,7 @@ MockLogger.createLogger = function(category, level) {
         opts.level = level;
     }
 
-    return new MockLogger( opts );
+    return new MockLogger(opts);
 };
 
 module.exports = MockLogger;
