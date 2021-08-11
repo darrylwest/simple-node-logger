@@ -3,23 +3,23 @@
 const filename = './logs/json-test.log';
 console.log('opening log file: ', filename);
 
-var SimpleLogger = require('../lib/SimpleLogger');
-    manager = new SimpleLogger(),
-    opts = {
-        logFilePath:filename
-    },
-    appender = manager.createFileAppender( opts );
+const SimpleLogger = require('../lib/SimpleLogger');
+const manager = new SimpleLogger();
+const opts = {
+    logFilePath: filename
+};
+const appender = manager.createFileAppender(opts);
 
 appender.formatter = function(entry) {
-    var fields = appender.formatEntry( entry );
+    let fields = appender.formatEntry(entry);
 
     fields[1] = entry.level;
 
-    return JSON.stringify( fields ) + '\n';
+    return JSON.stringify(fields) + '\n';
 };
 
-manager.addAppender( appender );
-var log = manager.createLogger('JSON');
+manager.addAppender(appender);
+const log = manager.createLogger('JSON');
 
 log.trace('this is a simple trace log statement (should not show)');
 log.debug('this is a simple debug log statement (should not show)');

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var filename = './logs/file-test.log';
+const filename = './logs/file-test.log';
 console.log('opening log file: ', filename);
 
-var log = require('../lib/SimpleLogger').createSimpleFileLogger( filename );
+const log = require('../lib/SimpleLogger').createSimpleFileLogger( filename );
 
 log.info('this is a simple info log statement/entry');
 log.warn('this is a simple warn log statement/entry');
