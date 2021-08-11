@@ -35,5 +35,6 @@
   ],
   "author": "darryl.west@raincitysoftware.com",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/darrylwest/simple-node-logger"
+  "homepage": "https://github.com/darrylwest/simple-node-logger",
+  "typings": "./index.d.ts"
 }
