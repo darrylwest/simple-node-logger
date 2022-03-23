@@ -157,6 +157,7 @@ declare namespace SimpleLogger
 		autoOpen?: boolean;
 		logFilePath: string;
 		writer?: any;
+		flags?: string;
 	}
 	export interface IRollingFileAppenderOptions extends IAbstractAppenderOptions
 	{
